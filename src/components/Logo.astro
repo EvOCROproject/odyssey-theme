@@ -1,18 +1,17 @@
 ---
+const alt = 'EvOCRO';
 ---
-
-<p class="odyssey-logo">Odyssey</p>
+<a href="/" aria-label={alt} class="inline-flex items-center gap-2 no-underline">
+  <img src="/odyssey-theme/assets/images/logo.jpg" alt={alt} height="40" />
+</a>
 
 <style>
-	.odyssey-logo {
-		width: fit-content;
-		margin: 0;
-		font-family: var(--theme-font-family-serif);
-    font-size: var(--font-size-md);
-		color: inherit;
-	}
-	.odyssey-logo:hover {
-		text-decoration: underline;
-		cursor: pointer;
-	}
+  a {
+    display: inline-flex;
+    align-items: center;
+  }
+  img {
+    height: 40px;
+    border-radius: 0;
+  }
 </style>
