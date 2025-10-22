@@ -18,18 +18,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Installa e builda il sito (Astro) nella cartella ./dist
+      # Necessario per GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Build del sito Astro (genera ./dist)
       - name: Build with Astro
         uses: withastro/action@v2
         with:
           path: ./
           node-version: 20
 
-      # Carica l'artefatto statico per Pages
+      # Carica l'artefatto da pubblicare
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
