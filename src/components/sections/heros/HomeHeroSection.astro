@@ -13,24 +13,22 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 					Evolutionary Origins of Cognition in Crocodiles
 				</p>
 				<div class="hero-btns__container">
-					<Button href="/theme/get-started" customIcon
-						>Get Started
-            <Fragment slot="icon">
-              <Icon name="ic:baseline-chevron-right"/>
-            </Fragment>
-            </Button
-					>
-					<Button href="/theme/style-guide" unelevated>Style Guide</Button>
-				</div>
+        <Button href="/odyssey-theme/project" customIcon>
+        Project
+         <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment>
+        </Button>
+        <Button href="/odyssey-theme/publications" unelevated>Publications</Button>
+                </div>
+
         {settings.enableThemeSwitcher && <ThemeSwitcher client:only/>}
 		</div>
 		<div class="hero-section__image">
 				<picture>
 					<img
-						src="/assets/images/home/classic-hero.jpg"
-						alt="Astro Odyssey"
-						id="home-hero-image"
-					/>
+                    src="/odyssey-theme/assets/images/home/classic-hero.jpg"
+                    alt="EvOCRO"
+                    id="home-hero-image"
+                     />
 				</picture>
 		</div>
 	</section>
