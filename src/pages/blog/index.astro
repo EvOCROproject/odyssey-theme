@@ -18,10 +18,10 @@ const posts = (await Astro.glob('./posts/*.mdx'))
   .sort((a, b) => (b.pubDate?.getTime() ?? 0) - (a.pubDate?.getTime() ?? 0));
 ---
 
-<Layout title="News" description="Updates, events, and field notes">
+<Layout title="Blog" description="Posts and insights from the EvOCRO project.">
   <section class="blog-hero">
-    <h1>News</h1>
-    <p>Updates, events, and field notes from the EvOCRO project.</p>
+    <h1>Blog</h1>
+    <p>Posts and insights from the EvOCRO project.</p>
   </section>
 
   <section class="posts-grid">
