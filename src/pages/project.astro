@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Page.astro';
+import { Container, Button } from '@components/odyssey-theme';
+
+const seo = {
+  title: 'EvOCRO Project',
+  description: 'Evolutionary Origins of Cognition in Crocodiles — objectives, methods, and outputs.',
+};
+const BASE = import.meta.env.BASE_URL;
+---
+
+<Layout seo={seo}>
+  <Container>
+    <section class="project-hero">
+      <h1>EvOCRO Project</h1>
+      <p class="lede">
+        Understanding the evolutionary origins of cognition in crocodiles through
+        fieldwork, behavioral assays, and comparative analyses.
+      </p>
+
+      <div class="cta">
+        <Button href={`${BASE}publications`}>Publications</Button>
+        <Button href={`${BASE}team`} unelevated>Team</Button>
+      </div>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <h2>Objectives</h2>
+        <ul>
+          <li>Map key cognitive domains across life stages.</li>
+          <li>Link behavior to ecology and life history.</li>
+          <li>Share open datasets and reproducible protocols.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Methods</h2>
+        <p>
+          Field experiments, ethograms, automated tracking, preregistrations, and
+          transparent analysis pipelines.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Outputs</h2>
+        <p>
+          Publications, datasets, outreach (blog/vlog), workshops, and training
+          activities.
+        </p>
+      </article>
+    </section>
+
+    <section class="wysiwyg">
+      <h2>Work Packages</h2>
+      <p>
+        The EvOCRO project is structured in interconnected work packages (WPs)
+        focusing on cognition, development, comparative evolution, and public
+        engagement. Each WP combines fieldwork, experimental testing, and data
+        integration.
+      </p>
+    </section>
+  </Container>
+</Layout>
+
+<style>
+  .project-hero {
+    margin: var(--section-margin) auto;
+    max-width: 60rem;
+  }
+  .lede {
+    color: var(--theme-on-surface-2);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .cards {
+    margin: var(--section-margin) auto;
+    display: grid;
+    gap: var(--theme-grid-gap);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @media (max-width: 1024px) {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    background: var(--theme-surface-1);
+    border-radius: var(--theme-shape-radius);
+    padding: 1.25rem;
+  }
+
+  .wysiwyg {
+    margin: var(--section-margin) auto;
+    max-width: 60rem;
+  }
+</style>
