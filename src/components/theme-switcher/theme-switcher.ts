@@ -4,11 +4,11 @@ import { customElement, property } from 'lit/decorators.js';
 import {
   darkThemeIcon,
   earthThemeIcon,
-  orangeThemeIcon,
+  orangeThemeIcon, // usato per "sand"
 } from './icons';
 
-// 🔗 Usa BASE_URL per funzionare anche su GitHub Pages
-const BASE = (import.meta as any).env?.BASE_URL || '/';
+// Funziona anche su GitHub Pages (es: /odyssey-theme/)
+const BASE: string = (import.meta as any).env?.BASE_URL ?? '/';
 
 const themes = [
   { name: 'dark',  icon: darkThemeIcon,   label: 'Dark'  },
@@ -65,23 +65,19 @@ export class ThemeSwitcher extends LitElement {
     `,
   ];
 
+  // Radice documento per l'attributo data-theme
   private _doc = document.firstElementChild;
 
   @property({ type: String })
   theme: string | null = null;
 
+  // Earth di default (senza guardare preferenze OS)
   private _getCurrentTheme() {
     const localStorageTheme = localStorage.getItem('theme');
-    if (localStorageTheme !== null) {
+    if (localStorageTheme) {
       this._setTheme(localStorageTheme);
     } else {
-      // Se il sistema è in dark mode, parte dark
-      const prefersDark =
-        typeof window !== 'undefined' &&
-        'matchMedia' in window &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      this._setTheme(prefersDark ? 'dark' : 'earth');
+      this._setTheme('earth');
     }
   }
 
@@ -92,7 +88,7 @@ export class ThemeSwitcher extends LitElement {
   private _setTheme(theme: string) {
     this._doc?.setAttribute('data-theme', theme);
 
-    // Aggiorna immagine hero (solo se esiste)
+    // Aggiorna immagine hero se presente
     const hero = document.querySelector('#home-hero-image') as HTMLImageElement | null;
     if (hero) {
       if (theme === 'dark')  hero.src = `${BASE}assets/images/home/dark-hero.jpg`;
@@ -105,24 +101,22 @@ export class ThemeSwitcher extends LitElement {
   }
 
   render() {
-    const themeButtons = html`${themes.map(
-      (t) => html`
-        <div class="theme-select__container">
-          <button
-            @click=${() => this._setTheme(t.name)}
-            ?active=${this.theme === t.name}
-            title=${`Enable ${t.label} Theme`}
-          >
-            ${t.icon}
-          </button>
-          <p>${t.label}</p>
-        </div>
-      `
-    )}`;
-
     return html`
       <div class="theme-switcher__container">
-        ${themeButtons}
+        ${themes.map(
+          (t) => html`
+            <div class="theme-select__container">
+              <button
+                @click=${() => this._setTheme(t.name)}
+                ?active=${this.theme === t.name}
+                title=${`Enable ${t.label} Theme`}
+              >
+                ${t.icon}
+              </button>
+              <p>${t.label}</p>
+            </div>
+          `
+        )}
       </div>
     `;
   }
