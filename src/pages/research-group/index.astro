@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Page.astro';
+import { Container } from '@components/odyssey-theme';
+
+const seo = {
+  title: 'Research Group | EvOCRO',
+  description: 'Team and partner institutions of the EvOCRO project',
+};
+---
+
+<Layout {seo}>
+  <Container>
+    <section style="margin: var(--section-margin) auto;">
+      <h1>Research Group</h1>
+      <p>Meet the EvOCRO team and our partner institutions.</p>
+      <ul>
+        <li><a href="/odyssey-theme/research-group/team">Team</a></li>
+        <li><a href="/odyssey-theme/research-group/affiliations">Affiliations</a></li>
+      </ul>
+    </section>
+  </Container>
+</Layout>
