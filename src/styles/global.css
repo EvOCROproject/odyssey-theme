@@ -1,15 +1,48 @@
-html,
-body {
-	height: 100%;
+/* ===== Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
-	max-width: 1920px;
-	margin: 0 auto;
-	background-color: var(--theme-bg);
-	position: relative;
+  margin: 0;                          /* niente max-width sul body */
+  background-color: var(--theme-bg);
+  color: var(--theme-on-bg);
+  position: relative;
 }
 
+/* ===== Container globale del tema =====
+   Odyssey usa .content__container come wrapper principale.
+   Qui gli diamo larghezza max e padding laterale. */
+.content__container {
+  max-width: var(--container-max-width, 1200px);
+  padding: var(--container-padding, 0 1rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== Header: compattiamo un po’ lo spazio verticale ===== */
+header {
+  padding-block: 0.5rem;              /* riduce la distanza header/contenuti */
+}
+
+/* ===== Home: più respiro ai lati delle sezioni con card ===== */
+.feature-card__section {
+  margin: var(--section-margin, 3rem) auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+/* Mobile: un filo di padding interno alla griglia per evitare “a filo” */
+@media (max-width: 768px) {
+  .feature-card__grid {
+    padding-inline: 0.25rem;
+  }
+}
+
+/* ===== Code blocks (tuo codice esistente) ===== */
 pre {
   padding: 1em;
   border-radius: 0.5em;
