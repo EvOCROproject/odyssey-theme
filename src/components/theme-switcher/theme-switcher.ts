@@ -86,19 +86,24 @@ export class ThemeSwitcher extends LitElement {
   }
 
   private _setTheme(theme: string) {
+  // Earth = default → nessun data-theme
+  if (theme === 'earth') {
+    this._doc?.removeAttribute('data-theme');
+  } else {
     this._doc?.setAttribute('data-theme', theme);
-
-    // Aggiorna immagine hero se presente
-    const hero = document.querySelector('#home-hero-image') as HTMLImageElement | null;
-    if (hero) {
-      if (theme === 'dark')  hero.src = `${BASE}assets/images/home/dark-hero.jpg`;
-      if (theme === 'earth') hero.src = `${BASE}assets/images/home/earth-hero.jpg`;
-      if (theme === 'sand')  hero.src = `${BASE}assets/images/home/sand-hero.jpg`;
-    }
-
-    localStorage.setItem('theme', theme);
-    this.theme = theme;
   }
+
+  // Aggiorna immagine hero se presente
+  const hero = document.querySelector('#home-hero-image') as HTMLImageElement | null;
+  if (hero) {
+    if (theme === 'dark')  hero.src = `${BASE}assets/images/home/dark-hero.jpg`;
+    if (theme === 'earth') hero.src = `${BASE}assets/images/home/earth-hero.jpg`;
+    if (theme === 'sand')  hero.src = `${BASE}assets/images/home/sand-hero.jpg`;
+  }
+
+  localStorage.setItem('theme', theme);
+  this.theme = theme;
+}
 
   render() {
     return html`
