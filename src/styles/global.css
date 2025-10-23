@@ -52,3 +52,24 @@ pre {
 pre .language-id {
   display: none;
 }
+:root {
+  /* fallback se non definiti altrove */
+  --container-max-width: 1200px;
+  --container-padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+/* Constrain & pad tutti i primi-level children di #page che NON sono già container */
+#page > *:not(.content__container):not(header):not(footer) {
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--container-padding);
+}
+
+/* Se qualche sezione deve essere full-bleed, aggiungi la classe .full-bleed a quell’elemento */
+.full-bleed {
+  max-width: none !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
