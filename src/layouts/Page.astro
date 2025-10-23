@@ -26,14 +26,14 @@ const { seo } = Astro.props as Props;
 		<slot />
 	</div>
 	<Footer
-		slot="footer"
-		background="var(--theme-surface-1)"
-		color="var(--theme-on-surface-1)"
-		footerLists={footerLists}
-    footerSocials={footerSocials}
-		copyrightName={settings.name}
-    showPlug={settings.showPlug}
-	>
-		<Logo slot="logo" />
-	</Footer>
+  slot="footer"
+  background="var(--theme-surface-1)"
+  color="var(--theme-on-surface-1)"
+  footerLists={footerLists ?? []}
+  footerSocials={footerSocials ?? []}
+  copyrightName={settings.name}
+  showPlug={settings.showPlug}
+>
+  <Logo slot="logo" />
+</Footer>
 </Layout>
