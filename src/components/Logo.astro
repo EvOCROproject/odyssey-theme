@@ -23,14 +23,18 @@ const size = Astro.props.size || 'large';
   }
 
   /* Logo piccolo (footer) */
-  .site-.small img {
+  .site-logo.small img {
     height: 48px;
     width: auto;
     display: block;
   }
 
   @media (max-width: 640px) {
-    .site-.large img { height: 72px; }
-    .site-.small img { height: 40px; }
+    .site-logo.large img {
+      height: 72px;
+    }
+    .site-logo.small img {
+      height: 40px;
+    }
   }
 </style>
