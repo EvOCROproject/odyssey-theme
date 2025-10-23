@@ -1,77 +1,110 @@
-/* src/styles/themes.css */
+/* ===============================
+   EvOCRO Theme System
+   Themes: Earth (default), Dark, Sand
+   =============================== */
 
-/* Token comuni (invarianti) */
+/* --- COMMON TOKENS (applied to all themes) --- */
 :root {
   --theme-transition: 180ms ease;
   --theme-shape-radius: 16px;
+  --theme-button-border-radius: 3rem;
   --theme-grid-gap: 1rem;
   --navbar-height: 64px;
+  --section-margin: 3rem;
+  --container-max-width: 1440px;
+  --container-max-width-narrow: 960px;
+  --container-padding: 0 1rem;
 
-  /* Tipografia base (se già definite altrove, puoi rimuovere queste) */
-  --font-size-sm: .9rem;
+  /* Typography */
+  --font-size-sm: 0.9rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.25rem;
+  --theme-font-family-serif: 'Roboto Serif', Georgia, Cambria, 'Times New Roman', Times, serif;
+  --theme-font-family-sans: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* =========================
-   EARTH (DEFAULT)
-   Fresco, naturale, leggibile
-========================= */
-:root[data-theme="earth"] {
-  --theme-bg: #F5F7F4;              /* sfondo pagina */
-  --theme-on-bg: #0E1A12;           /* testo principale su bg */
+/* =========================================================
+   EARTH — DEFAULT THEME (no data-theme attribute)
+   Natural, fresh, readable
+========================================================= */
+:root {
+  color-scheme: light;
 
-  --theme-primary: #2A7A49;         /* accento/CTA */
-  --theme-on-primary: #FFFFFF;      /* testo su primary */
+  --theme-primary: #2a7a49;
+  --theme-primary-hover: #338e55;
+  --theme-on-primary: #ffffff;
 
-  --theme-surface-1: #FFFFFF;       /* card, pannelli */
-  --theme-on-surface-1: #0E1A12;    /* testo su surface-1 */
+  --theme-bg: #f5f7f4;
+  --theme-on-bg: #0e1a12;
 
-  --theme-surface-2: #E7EFE8;       /* superfici secondarie */
-  --theme-on-surface-2: #234129;    /* testo secondario */
+  --theme-surface-1: #ffffff;
+  --theme-on-surface-1: #0e1a12;
+
+  --theme-surface-2: #e7efe8;
+  --theme-on-surface-2: #234129;
+
+  --form-field-input-color: var(--theme-on-bg);
 }
 
-/* =========================
-   DARK
-   Scuro, alto contrasto
-========================= */
-:root[data-theme="dark"] {
-  --theme-bg: #0E1116;
-  --theme-on-bg: #EAECEF;
+/* =========================================================
+   DARK — High contrast, elegant
+========================================================= */
+:root[data-theme='dark'] {
+  color-scheme: dark;
 
-  --theme-primary: #38BDA4;         /* verde acqua “emerald” */
-  --theme-on-primary: #0B0E10;
+  --theme-primary: #38bda4;
+  --theme-primary-hover: #50d1b7;
+  --theme-on-primary: #0b0e10;
 
-  --theme-surface-1: #161B22;
-  --theme-on-surface-1: #EAECEF;
+  --theme-bg: #0e1116;
+  --theme-on-bg: #eaecef;
 
-  --theme-surface-2: #0F141A;
-  --theme-on-surface-2: #A9B1BA;
+  --theme-surface-1: #161b22;
+  --theme-on-surface-1: #eaecef;
+
+  --theme-surface-2: #0f141a;
+  --theme-on-surface-2: #a9b1ba;
+
+  --form-field-input-color: var(--theme-on-bg);
 }
 
-/* =========================
-   SAND
-   Caldo, sabbia/deserto
-========================= */
-:root[data-theme="sand"] {
-  --theme-bg: #F9F4EC;
-  --theme-on-bg: #2A1E10;
+/* =========================================================
+   SAND — Warm, desert tones
+========================================================= */
+:root[data-theme='sand'] {
+  color-scheme: light;
 
-  --theme-primary: #C98C3A;         /* ambra/sabbia */
-  --theme-on-primary: #1E1305;
+  --theme-primary: #c98c3a;
+  --theme-primary-hover: #d89a48;
+  --theme-on-primary: #1e1305;
 
-  --theme-surface-1: #FFFFFF;
-  --theme-on-surface-1: #2A1E10;
+  --theme-bg: #f9f4ec;
+  --theme-on-bg: #2a1e10;
 
-  --theme-surface-2: #F1E7D6;
-  --theme-on-surface-2: #4A3A22;
+  --theme-surface-1: #ffffff;
+  --theme-on-surface-1: #2a1e10;
+
+  --theme-surface-2: #f1e7d6;
+  --theme-on-surface-2: #4a3a22;
+
+  --form-field-input-color: var(--theme-on-bg);
 }
 
-/* Applicazione di base (se non già definita altrove) */
-html, body {
+/* --- BASIC ELEMENTS --- */
+html,
+body {
   background: var(--theme-bg);
   color: var(--theme-on-bg);
+  font-family: var(--theme-font-family-sans);
   transition: background var(--theme-transition), color var(--theme-transition);
 }
 
-a { color: inherit; }
+a {
+  color: var(--theme-primary);
+  text-decoration: none;
+  transition: color var(--theme-transition);
+}
+
+a:hover {
+  color: var(--theme-primary-hover);
+}
