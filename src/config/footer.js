@@ -1,32 +1,46 @@
 // src/config/footer.js
 
-// Colonne link nel footer
+// Voci a colonne nel footer
 export const footerLists = [
   {
-    title: 'Explore',
-    links: [
-      { label: 'Contact', href: '/odyssey-theme/contact' },
-      { label: 'Affiliations', href: '/odyssey-theme/research-group' },
+    title: 'About MSCA',
+    items: [
+      {
+        title: 'Marie Skłodowska-Curie Actions',
+        slug: 'https://marie-sklodowska-curie-actions.ec.europa.eu/',
+      },
     ],
   },
   {
-    title: 'External',
-    links: [
-      { label: 'MSCA', href: 'https://marie-sklodowska-curie-actions.ec.europa.eu/' },
-      // aggiungi altri link esterni se vuoi:
-      // { label: 'EU Research', href: 'https://research-and-innovation.ec.europa.eu/' },
+    title: 'Project',
+    items: [
+      { title: 'EvOCRO Project', slug: '/odyssey-theme/project' },
+    ],
+  },
+  {
+    title: 'Contact',
+    items: [
+      { title: 'Get in touch', slug: '/odyssey-theme/contact' },
+    ],
+  },
+  {
+    title: 'Social',
+    items: [
+      // Per ora vuoto. Quando avremo i profili:
+      // { title: 'Instagram', slug: 'https://instagram.com/...' },
+      // { title: 'Facebook',  slug: 'https://facebook.com/...' },
+      // ecc.
     ],
   },
 ];
 
-// Social nel footer (lascia vuoto per non mostrare nulla,
-// oppure metti i tuoi profili reali)
+// Icone social (barra sotto al logo nel footer)
+// Le lascio vuote per ora: le aggiungeremo quando avrai gli URL.
 export const footerSocials = [
-  // Esempi (sostituisci gli URL con i tuoi o lascia vuoto l'array):
-  // { icon: 'mdi:twitter',  label: 'X/Twitter', href: 'https://twitter.com/tuo_handle' },
-  // { icon: 'mdi:instagram', label: 'Instagram', href: 'https://instagram.com/tuo_handle' },
-  // { icon: 'mdi:facebook',  label: 'Facebook', href: 'https://facebook.com/tuo_handle' },
-  // { icon: 'mdi:youtube',   label: 'YouTube', href: 'https://youtube.com/@tuo_canale' },
-  // { icon: 'mdi:tiktok',    label: 'TikTok', href: 'https://tiktok.com/@tuo_handle' },
-  // { icon: 'mdi:cloud',     label: 'Bluesky', href: 'https://bsky.app/profile/tuo_handle.bsky.social' },
+  // Esempio (quando pronti):
+  // { name: 'Instagram', url: 'https://instagram.com/..', icon: 'mdi:instagram' },
+  // { name: 'Facebook',  url: 'https://facebook.com/..', icon: 'mdi:facebook' },
+  // { name: 'X',         url: 'https://x.com/..',        icon: 'mdi:twitter' },
+  // { name: 'Bluesky',   url: 'https://bsky.app/profile/..', icon: 'mdi:feather' },
+  // { name: 'TikTok',    url: 'https://tiktok.com/@..',  icon: 'ic:baseline-tiktok' },
 ];
