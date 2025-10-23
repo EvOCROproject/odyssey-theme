@@ -1,17 +1,29 @@
 ---
-const alt = 'EvOCRO';
+const ALT = 'EvOCRO';
+const SRC = '/odyssey-theme/assets/images/logo.jpg'; // lascia il path assoluto con base del repo
 ---
-<a href="/" aria-label={alt} class="inline-flex items-center gap-2 no-underline">
-  <img src="/odyssey-theme/assets/images/logo.jpg" alt={alt} height="60" />
+
+<a href="/" aria-label={ALT} class="site-logo">
+  <img src={SRC} alt={ALT} />
 </a>
 
 <style>
-  a {
+  .site-logo {
     display: inline-flex;
     align-items: center;
+    gap: .5rem;
+    text-decoration: none;
   }
-  img {
-    height: 40px;
-    border-radius: 0;
+  .site-logo img {
+    /* aumenta qui l’altezza del logo */
+    height: 96px;
+    width: auto;
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .site-logo img {
+      height: 72px;
+    }
   }
 </style>
