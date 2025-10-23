@@ -1,9 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
-import Container  from '../core/Container.astro';
+import Container from '../core/Container.astro';
 import Plug from './Plug.astro';
 
-// 👇 Default sicuri:
+// ✅ Props con default sicuri per evitare errori quando mancano
 const {
   footerSocials = [],
   footerLists   = [],
@@ -14,17 +14,16 @@ const {
 } = Astro.props;
 ---
 
-<footer
-  style={background && `--footer-bg:${background}; --footer-color:${color}`}
->
+<footer style={`--footer-bg:${background}; --footer-color:${color}`}>
   <Container>
     <div class="footer-grid__container">
       <div class="footer-brand__container">
         <div>
           <slot name="logo" />
         </div>
+
         <ul class="footer-socials__list">
-          {
+          {footerSocials.length > 0 &&
             footerSocials.map((social) => (
               <li class="footer-socials__item">
                 <a
@@ -41,12 +40,13 @@ const {
           }
         </ul>
       </div>
-      {
+
+      {footerLists.length > 0 &&
         footerLists.map((list) => (
           <div>
             <p><strong>{list.title}</strong></p>
             <ul class="footer-link__list">
-              {list.items.map((item) => (
+              {(list.items ?? []).map((item) => (
                 <li>
                   <a href={item.slug}>{item.title}</a>
                 </li>
@@ -56,11 +56,11 @@ const {
         ))
       }
     </div>
+
     <div class="footer-copyright__container">
-      {showPlug && <Plug/>}
+      {showPlug && <Plug />}
       <p>Copyright &copy; {new Date().getFullYear()} {copyrightName}</p>
     </div>
-
   </Container>
 </footer>
 
@@ -105,7 +105,6 @@ const {
   .footer-copyright__container {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
   }
   .footer-copyright__container p {
     font-size: var(--font-size-sm);
