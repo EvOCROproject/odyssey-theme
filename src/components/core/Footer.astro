@@ -11,6 +11,10 @@ const {
   color         = 'var(--theme-on-surface-1)',
   showPlug: showPlug = true,
 } = Astro.props;
+
+function isExternalLink(url) {
+  return url.startsWith('http');
+}
 ---
 
 <footer style={`--footer-bg:${background}; --footer-color:${color}`}>
@@ -47,7 +51,13 @@ const {
             <ul class="footer-link__list">
               {(list.items ?? []).map((item) => (
                 <li>
-                  <a href={item.slug}>{item.title}</a>
+                  <a
+                    href={item.slug}
+                    target={isExternalLink(item.slug) ? '_blank' : '_self'}
+                    rel={isExternalLink(item.slug) ? 'noopener noreferrer' : undefined}
+                  >
+                    {item.title}
+                  </a>
                 </li>
               ))}
             </ul>
