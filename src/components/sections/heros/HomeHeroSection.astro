@@ -35,49 +35,66 @@ import { ThemeSwitcher } from '../../theme-switcher/theme-switcher';
 </Container>
 
 <style>
-	.hero-section__section {
-		margin: var(--section-margin) auto;
-		min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		align-items: center;
-		gap: 1rem;
-	}
-	.hero-section__text {
-		justify-self: center;
-		max-width: 32rem; /* + spazio */
-	}
-  .hero-section__text h1 {
-    font-size: clamp(2.2rem, 4vw, 3rem);
-    line-height: 1.1;
-    margin: 0 0 .5rem 0;
-  }
-  .hero-section__text p {
-    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-    line-height: 1.6;
-    margin: 0 0 1.25rem 0;
+  .hero-section__section {
+    margin: var(--section-margin) auto;
+    min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
   }
 
-	.hero-btns__container {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		margin-right: 1rem;
-	}
-	.hero-section__image {
-		display: flex;
-	}
-	.hero-section__image img {
-		width: 100%;
-		height: 100%;
-		max-height: 80vh;
-		object-fit: cover;
-    object-position: center;
-		border-radius: var(--theme-shape-radius);
-	}
-	@media (max-width: 768px) {
-		.hero-section__section { grid-template-columns: 1fr; }
-    .hero-section__text { max-width: 36rem; }
-	}
+  .hero-section__text {
+    justify-self: center;
+    max-width: 42rem; /* più ampio per titoli grandi */
+  }
+
+  /* 👑 Titolo grande */
+  .hero-section__text h1 {
+    margin: 0 0 0.25rem 0;
+    font-size: clamp(2.4rem, 4vw + 0.5rem, 4.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  /* ✨ Sottotitolo più grande e leggibile */
+  .hero-section__text p {
+    margin: 0 0 1.25rem 0;
+    font-size: clamp(1.125rem, 1.2vw + 0.5rem, 1.5rem);
+    line-height: 1.4;
+    color: var(--theme-on-surface-2);
+  }
+
+  .hero-btns__container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+  }
+
+  .hero-section__image {
+    display: flex;
+  }
+  .hero-section__image img {
+    width: 100%;
+    height: 100%;
+    max-height: 80vh;
+    object-fit: cover;
+    border-radius: var(--theme-shape-radius);
+  }
+
+  /* 📱 Mobile */
+  @media (max-width: 768px) {
+    .hero-section__section {
+      grid-template-columns: 1fr;
+    }
+    .hero-section__text h1 {
+      font-size: clamp(2rem, 6.5vw, 3rem);
+    }
+    .hero-section__text p {
+      font-size: clamp(1rem, 3.8vw, 1.25rem);
+    }
+  }
 </style>
 
