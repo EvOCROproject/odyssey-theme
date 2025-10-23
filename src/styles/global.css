@@ -32,13 +32,13 @@ header {
 /* ===== Home: più respiro ai lati delle sezioni con card ===== */
 .feature-card__section {
   margin: var(--section-margin, 3rem) auto;
-  padding-inline: clamp(1rem, 4vw, 2rem);
+  padding-inline: clamp(2rem, 6vw, 4rem); /* aumenta lo spazio laterale */
 }
 
 /* Mobile: un filo di padding interno alla griglia per evitare “a filo” */
 @media (max-width: 768px) {
-  .feature-card__grid {
-    padding-inline: 0.25rem;
+  .feature-card__section {
+    padding-inline: 1.5rem; /* mantiene aria anche su schermi stretti */
   }
 }
 
