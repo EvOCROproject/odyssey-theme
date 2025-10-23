@@ -1,37 +1,80 @@
 ---
 import Layout from '../../layouts/Page.astro';
-import { Container } from '@components/odyssey-theme';
 
 const seo = {
-  title: 'Research Group | EvOCRO',
-  description: 'Team and partner institutions of the EvOCRO project',
+  title: 'Affiliations | EvOCRO',
+  description: 'Partner institutions involved and collaborating in the EvOCRO project',
 };
 ---
 
-<Layout title="Partner Institutions" description="Institutions collaborating with EvOCRO">
-  <h1>Affiliations</h1>
-  <p>We collaborate with the following institutions:</p>
+<Layout title="Affiliations" description="Partner institutions of the EvOCRO project">
+  <section class="affiliations">
+    <div class="affiliation">
+      <a href="https://aru.ac.uk" target="_blank" rel="noopener noreferrer">
+        <img src="/odyssey-theme/assets/affiliations/aru.png" alt="Anglia Ruskin University logo" />
+        <p>Anglia Ruskin University</p>
+      </a>
+    </div>
 
-  <div class="affiliations">
-    <div class="logo">
-      <img src="/odyssey-theme/assets/affiliations/uni1.png" alt="University 1" />
-      <p>University 1</p>
+    <div class="affiliation">
+      <a href="https://www.uacam.mx/" target="_blank" rel="noopener noreferrer">
+        <img src="/odyssey-theme/assets/affiliations/uacam.png" alt="Universidad Autónoma de Campeche logo" />
+        <p>Universidad Autónoma de Campeche</p>
+      </a>
     </div>
-    <div class="logo">
-      <img src="/odyssey-theme/assets/affiliations/uni2.png" alt="Institute 2" />
-      <p>Institute 2</p>
+
+    <div class="affiliation">
+      <a href="https://www.facebook.com/CrocodileResearchandManagement" target="_blank" rel="noopener noreferrer">
+        <img src="/odyssey-theme/assets/affiliations/crmc.png" alt="Crocodile Research and Management for Conservation logo" />
+        <p>Crocodile Research and Management for Conservation</p>
+      </a>
     </div>
-  </div>
+
+    <div class="affiliation">
+      <a href="https://www.ecosur.mx/" target="_blank" rel="noopener noreferrer">
+        <img src="/odyssey-theme/assets/affiliations/ecosur.png" alt="El Colegio de la Frontera Sur logo" />
+        <p>El Colegio de la Frontera Sur</p>
+      </a>
+    </div>
+  </section>
 </Layout>
 
 <style>
-  .affiliations{
-    display:grid; gap:var(--theme-grid-gap);
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    margin: var(--section-margin) auto;
+  .affiliations {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin: var(--section-margin, 3rem) auto;
+    text-align: center;
   }
-  @media (max-width:1024px){ .affiliations{ grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:640px){ .affiliations{ grid-template-columns:1fr;} }
-  .logo{ background:var(--theme-surface-1); border-radius:var(--theme-shape-radius); padding:1rem; text-align:center; }
-  .logo img{ max-width:220px; height:auto; }
+
+  .affiliation a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    background: var(--theme-surface-1);
+    color: var(--theme-on-surface-1);
+    border-radius: var(--theme-shape-radius);
+    padding: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .affiliation a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .affiliation img {
+    max-width: 140px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .affiliation p {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
 </style>
