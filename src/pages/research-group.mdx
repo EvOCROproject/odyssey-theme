@@ -1,10 +1,28 @@
 ---
-title: "Affiliations & Partners"
-description: "Institutions collaborating with EvOCRO"
+layout: '../layouts/Page.astro'
+title: Partner Institutions
+description: Institutions collaborating with EvOCRO
 ---
 
-# Affiliations & Partners
+# Affiliations
 
-- Anglia Ruskin University  
-- CEDESU  
-- Crocodile Research and Management for Conservation Group (Mexico)
+We collaborate with the following institutions:
+
+<div class="affiliations">
+  <div class="logo">
+    <img src="/assets/affiliations/uni1.png" alt="University 1" />
+    <p>University 1</p>
+  </div>
+  <div class="logo">
+    <img src="/assets/affiliations/uni2.png" alt="Institute 2" />
+    <p>Institute 2</p>
+  </div>
+</div>
+
+<style>
+  .affiliations{ display:grid; gap:var(--theme-grid-gap); grid-template-columns:repeat(3,minmax(0,1fr)); }
+  @media (max-width:1024px){ .affiliations{ grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:640px){ .affiliations{ grid-template-columns:1fr;} }
+  .logo{ background:var(--theme-surface-1); border-radius:var(--theme-shape-radius); padding:1rem; text-align:center; }
+  .logo img{ max-width:220px; height:auto; }
+</style>
