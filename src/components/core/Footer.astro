@@ -3,8 +3,15 @@ import { Icon } from 'astro-icon/components';
 import Container  from '../core/Container.astro';
 import Plug from './Plug.astro';
 
-const { footerSocials, footerLists, copyrightName, background, color, showPlug: showPlug = true } =
-  Astro.props;
+// 👇 Default sicuri:
+const {
+  footerSocials = [],
+  footerLists   = [],
+  copyrightName = '',
+  background    = 'var(--theme-surface-1)',
+  color         = 'var(--theme-on-surface-1)',
+  showPlug: showPlug = true,
+} = Astro.props;
 ---
 
 <footer
