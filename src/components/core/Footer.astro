@@ -13,7 +13,7 @@ const {
 } = Astro.props;
 
 function isExternalLink(url) {
-  return url.startsWith('http');
+  return url?.startsWith?.('http');
 }
 ---
 
@@ -66,6 +66,36 @@ function isExternalLink(url) {
       }
     </div>
 
+    {/* --- NUOVA SEZIONE LOGHI PARTNER --- */}
+    <div class="footer-logos">
+      {/* Logo “ampio” del progetto */}
+      <img
+        src="/odyssey-theme/assets/footer-logos/evocro-wide.png"
+        alt="EvOCRO"
+      />
+      {/* Commissione Europea */}
+      <a href="https://european-union.europa.eu/index_en" target="_blank" rel="noopener noreferrer" title="European Commission">
+        <img
+          src="/odyssey-theme/assets/footer-logos/eu-commission.png"
+          alt="European Commission"
+        />
+      </a>
+      {/* MSCA */}
+      <a href="https://marie-sklodowska-curie-actions.ec.europa.eu/" target="_blank" rel="noopener noreferrer" title="MSCA">
+        <img
+          src="/odyssey-theme/assets/footer-logos/msca.png"
+          alt="MSCA"
+        />
+      </a>
+      {/* ARU */}
+      <a href="https://www.aru.ac.uk" target="_blank" rel="noopener noreferrer" title="Anglia Ruskin University">
+        <img
+          src="/odyssey-theme/assets/footer-logos/aru.png"
+          alt="Anglia Ruskin University"
+        />
+      </a>
+    </div>
+
     <div class="footer-copyright__container">
       {showPlug && <Plug />}
       <p>Copyright &copy; {new Date().getFullYear()} {copyrightName}</p>
@@ -83,45 +113,63 @@ function isExternalLink(url) {
     border-top-left-radius: var(--theme-shape-radius);
     border-top-right-radius: var(--theme-shape-radius);
   }
+
   .footer-grid__container {
     padding: 10vh 0 1rem 0;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
   }
+
   .footer-socials__list {
     margin: 1rem 0;
     padding: 0;
     display: flex;
     list-style: none;
   }
-  .footer-socials__item {
-    margin-right: 0.5rem;
-  }
+  .footer-socials__item { margin-right: 0.5rem; }
+
   .footer-link__list {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  .footer-link__list li {
-    margin-bottom: 0.5rem;
+  .footer-link__list li { margin-bottom: 0.5rem; }
+  .footer-link__list li a { text-decoration: none; }
+  .footer-link__list li a:hover { opacity: 0.84; }
+
+  /* --- LOGHI PARTNER --- */
+  .footer-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;   /* centrati in orizzontale */
+    gap: 1.5rem;
+    padding-top: 1.5rem;
   }
-  .footer-link__list li a {
-    text-decoration: none;
+
+  .footer-logos img {
+    max-height: 48px;          /* <— regola qui la dimensione uniforme */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    opacity: 0.95;
+    transition: opacity .2s ease;
+    filter: none;               /* mantiene i colori dei loghi in tutti i temi */
   }
-  .footer-link__list li a:hover {
-    opacity: 0.84;
-  }
+
+  .footer-logos img:hover { opacity: 1; }
+
   .footer-copyright__container {
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
   }
   .footer-copyright__container p {
     font-size: var(--font-size-sm);
   }
+
   @media (max-width: 768px) {
-    .footer-grid__container :first-child {
-      grid-column: 1/-1;
-    }
+    .footer-grid__container :first-child { grid-column: 1/-1; }
     .footer-grid__container {
       padding: 5vh 0;
       grid-template-columns: repeat(2, 1fr);
@@ -134,8 +182,7 @@ function isExternalLink(url) {
       grid-template-columns: 1fr;
       gap: 1rem;
     }
-    .footer-copyright__container {
-      flex-direction: column;
-    }
+    .footer-logos img { max-height: 40px; } /* più piccolo su mobile */
+    .footer-copyright__container { flex-direction: column; }
   }
 </style>
