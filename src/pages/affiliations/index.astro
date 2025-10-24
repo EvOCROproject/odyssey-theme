@@ -15,35 +15,43 @@ const seo = {
   <Container>
     <h1>Affiliations</h1>
     <p class="intro">
-      The EvOCRO project collaborates with international research groups and conservation institutions.
+      Partner institutions involved and collaborating on the EvOCRO project.
     </p>
 
     <div class="affiliations">
       <div class="logo-card">
         <a href="https://www.aru.ac.uk" target="_blank" rel="noopener noreferrer">
-          <img src={`${BASE}assets/affiliations/aru.png`} alt="Anglia Ruskin University" />
+          <div class="logo-img-wrapper">
+  <img src={`${BASE}assets/affiliations/aru.png`} alt="Anglia Ruskin University" />
+</div>
         </a>
         <p>Anglia Ruskin University</p>
       </div>
 
       <div class="logo-card">
         <a href="https://www.uacam.mx" target="_blank" rel="noopener noreferrer">
+<div class="logo-img-wrapper">
           <img src={`${BASE}assets/affiliations/uacam.png`} alt="Universidad Autónoma de Campeche" />
+</div>
         </a>
         <p>Universidad Autónoma de Campeche</p>
       </div>
 
       <div class="logo-card">
         <a href="https://www.facebook.com/CRMC.Cam/" target="_blank" rel="noopener noreferrer">
-          <img src={`${BASE}assets/affiliations/croco.png`} alt="Crocodile Research and Management for Conservation" />
-        </a>
+         <div class="logo-img-wrapper">
+<img src={`${BASE}assets/affiliations/croco.png`} alt="Crocodile Research and Management for Conservation" />
+</div>    
+</a>
         <p>Crocodile Research and Management for Conservation</p>
       </div>
 
       <div class="logo-card">
         <a href="https://www.ecosur.mx" target="_blank" rel="noopener noreferrer">
+<div class="logo-img-wrapper">
           <img src={`${BASE}assets/affiliations/ECOSUR.jpg`} alt="El Colegio de la Frontera Sur" />
-        </a>
+</div>       
+</a>
         <p>El Colegio de la Frontera Sur</p>
       </div>
     </div>
@@ -71,21 +79,32 @@ const seo = {
   }
 
   .logo-card {
-    background: var(--theme-surface-1);
-    border-radius: var(--theme-shape-radius);
-    padding: 1.25rem;
-    text-align: center;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
+  background: var(--theme-surface-1);
+  border-radius: var(--theme-shape-radius);
+  padding: 1.75rem 1rem;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  .logo-card img {
-    max-width: 180px;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto 0.75rem;
-    object-fit: contain;
-  }
+/* Nuovo wrapper per controllare le immagini */
+.logo-card .logo-img-wrapper {
+  width: 100%;
+  height: 120px;                /* altezza uniforme per tutti i loghi */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.logo-card img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
 
   .logo-card p {
     margin: 0;
