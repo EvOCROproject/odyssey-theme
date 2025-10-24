@@ -34,6 +34,11 @@ const { seo } = Astro.props as Props;
   copyrightName={settings.name}
   showPlug={settings.showPlug}
 >
-  <Logo slot="logo" size="small" />
+  <div slot="logo" class="footer-logos">
+    <img src="/odyssey-theme/assets/footer-logos/evocro-wide.png" alt="EvOCRO" />
+    <img src="/odyssey-theme/assets/footer-logos/eu.png" alt="European Union" />
+    <img src="/odyssey-theme/assets/footer-logos/msca.png" alt="MSCA" />
+    <img src="/odyssey-theme/assets/footer-logos/aru.png" alt="ARU" />
+  </div>
 </Footer>
 </Layout>
