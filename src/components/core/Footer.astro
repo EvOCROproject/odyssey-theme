@@ -6,6 +6,7 @@ import Plug from './Plug.astro';
 const {
   footerSocials = [],
   footerLists   = [],
+  footerLogos   = [], // ⬅️ nuovo
   copyrightName = '',
   background    = 'var(--theme-surface-1)',
   color         = 'var(--theme-on-surface-1)',
@@ -13,7 +14,7 @@ const {
 } = Astro.props;
 
 function isExternalLink(url) {
-  return url?.startsWith?.('http');
+  return url?.startsWith('http');
 }
 ---
 
@@ -21,10 +22,9 @@ function isExternalLink(url) {
   <Container>
     <div class="footer-grid__container">
       <div class="footer-brand__container">
-        <div>
-          <slot name="logo" />
-        </div>
+        <!-- Logo del sito: rimosso su richiesta. (Niente slot "logo") -->
 
+        <!-- Social icons (se/quando le aggiungeremo) -->
         <ul class="footer-socials__list">
           {footerSocials.length > 0 &&
             footerSocials.map((social) => (
@@ -66,35 +66,13 @@ function isExternalLink(url) {
       }
     </div>
 
-    {/* --- NUOVA SEZIONE LOGHI PARTNER --- */}
-    <div class="footer-logos">
-      {/* Logo “ampio” del progetto */}
-      <img
-        src="/odyssey-theme/assets/footer-logos/TitleCol.jpg"
-        alt="EvOCRO"
-      />
-      {/* Commissione Europea */}
-      <a href="https://european-union.europa.eu/index_en" target="_blank" rel="noopener noreferrer" title="European Commission">
-        <img
-          src="/odyssey-theme/assets/footer-logos/eulogo.png"
-          alt="European Commission"
-        />
-      </a>
-      {/* MSCA */}
-      <a href="https://marie-sklodowska-curie-actions.ec.europa.eu/" target="_blank" rel="noopener noreferrer" title="MSCA">
-        <img
-          src="/odyssey-theme/assets/footer-logos/msca.png"
-          alt="MSCA"
-        />
-      </a>
-      {/* ARU */}
-      <a href="https://www.aru.ac.uk" target="_blank" rel="noopener noreferrer" title="Anglia Ruskin University">
-        <img
-          src="/odyssey-theme/assets/footer-logos/aru.png"
-          alt="Anglia Ruskin University"
-        />
-      </a>
-    </div>
+    {footerLogos.length > 0 && (
+      <div class="footer-logos">
+        {footerLogos.map((logo) => (
+          <img src={logo.src} alt={logo.alt} />
+        ))}
+      </div>
+    )}
 
     <div class="footer-copyright__container">
       {showPlug && <Plug />}
@@ -107,7 +85,6 @@ function isExternalLink(url) {
   footer {
     --footer-bg: var(--theme-primary);
     --footer-color: var(--theme-on-primary);
-    min-height: 40vh;
     background-color: var(--footer-bg);
     color: var(--footer-color);
     border-top-left-radius: var(--theme-shape-radius);
@@ -115,74 +92,76 @@ function isExternalLink(url) {
   }
 
   .footer-grid__container {
-    padding: 10vh 0 1rem 0;
+    padding: 6vh 0 1rem 0;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1.25rem;
   }
 
+  /* Social */
   .footer-socials__list {
-    margin: 1rem 0;
+    margin: 1rem 0 0;
     padding: 0;
     display: flex;
     list-style: none;
+    gap: .5rem;
   }
-  .footer-socials__item { margin-right: 0.5rem; }
 
+  /* Link list */
   .footer-link__list {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  .footer-link__list li { margin-bottom: 0.5rem; }
-  .footer-link__list li a { text-decoration: none; }
-  .footer-link__list li a:hover { opacity: 0.84; }
-
-  /* --- LOGHI PARTNER --- */
-  .footer-logos {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;   /* centrati in orizzontale */
-    gap: 1.5rem;
-    padding-top: 1.5rem;
+  .footer-link__list li {
+    margin-bottom: 0.5rem;
+  }
+  .footer-link__list li a {
+    text-decoration: none;
+  }
+  .footer-link__list li a:hover {
+    opacity: 0.84;
   }
 
+  /* Row loghi uniformi */
+  .footer-logos {
+    margin: 2rem 0 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1rem, 2.5vw, 2rem);
+  }
   .footer-logos img {
-    max-height: 48px;          /* <— regola qui la dimensione uniforme */
+    height: 48px;            /* ⬅️ stessa altezza per tutti */
     width: auto;
     object-fit: contain;
     display: block;
-    opacity: 0.95;
-    transition: opacity .2s ease;
-    filter: none;               /* mantiene i colori dei loghi in tutti i temi */
+    filter: none;            /* mantieni colori originali */
+    transition: transform 0.15s ease;
+  }
+  .footer-logos img:hover {
+    transform: scale(1.05);
   }
 
-  .footer-logos img:hover { opacity: 1; }
-
   .footer-copyright__container {
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
   }
   .footer-copyright__container p {
     font-size: var(--font-size-sm);
   }
 
-  @media (max-width: 768px) {
-    .footer-grid__container :first-child { grid-column: 1/-1; }
+  @media (max-width: 1024px) {
     .footer-grid__container {
-      padding: 5vh 0;
+      padding: 5vh 0 1rem 0;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
     }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .footer-grid__container {
-      padding: 5vh 0;
+      padding: 4vh 0 1rem 0;
       grid-template-columns: 1fr;
-      gap: 1rem;
     }
-    .footer-logos img { max-height: 40px; } /* più piccolo su mobile */
-    .footer-copyright__container { flex-direction: column; }
   }
 </style>
