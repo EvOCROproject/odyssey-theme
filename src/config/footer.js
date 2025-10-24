@@ -26,21 +26,21 @@ export const footerLists = [
   {
     title: 'Social',
     items: [
-      // Per ora vuoto. Quando avremo i profili:
-      // { title: 'Instagram', slug: 'https://instagram.com/...' },
-      // { title: 'Facebook',  slug: 'https://facebook.com/...' },
-      // ecc.
+      // (da popolare quando avremo i profili)
     ],
   },
 ];
 
-// Icone social (barra sotto al logo nel footer)
-// Le lascio vuote per ora: le aggiungeremo quando avrai gli URL.
+// Icone social (vuoto per ora)
 export const footerSocials = [
-  // Esempio (quando pronti):
-  // { name: 'Instagram', url: 'https://instagram.com/..', icon: 'mdi:instagram' },
-  // { name: 'Facebook',  url: 'https://facebook.com/..', icon: 'mdi:facebook' },
-  // { name: 'X',         url: 'https://x.com/..',        icon: 'mdi:twitter' },
-  // { name: 'Bluesky',   url: 'https://bsky.app/profile/..', icon: 'mdi:feather' },
-  // { name: 'TikTok',    url: 'https://tiktok.com/@..',  icon: 'ic:baseline-tiktok' },
+  // Esempio futuro:
+  // { name: 'Instagram', url: 'https://instagram.com/...', icon: 'mdi:instagram' },
+];
+
+// 🔻 NUOVO: loghi in basso al footer (metti i file in public/assets/footer-logos/)
+export const footerLogos = [
+  { src: '/odyssey-theme/assets/footer-logos/TitleCol.jpg', alt: 'EvOCRO' },
+  { src: '/odyssey-theme/assets/footer-logos/eulogo.png',           alt: 'European Union' },
+  { src: '/odyssey-theme/assets/footer-logos/msca.png',         alt: 'MSCA' },
+  { src: '/odyssey-theme/assets/footer-logos/aru.png',          alt: 'Anglia Ruskin University' },
 ];
