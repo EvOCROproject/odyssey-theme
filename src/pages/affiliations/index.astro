@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Page.astro';
+import { Container } from '@components/odyssey-theme';
+
+// BASE URL (gestisce /odyssey-theme/ su GitHub Pages)
+const BASE = import.meta.env.BASE_URL;
 
 const seo = {
   title: 'Affiliations | EvOCRO',
@@ -8,55 +12,55 @@ const seo = {
 ---
 
 <Layout {seo}>
-  <h1>Affiliations</h1>
-  <p class="intro">
-    The EvOCRO project collaborates with international research groups and conservation institutions.
-  </p>
+  <Container>
+    <h1>Affiliations</h1>
+    <p class="intro">
+      The EvOCRO project collaborates with international research groups and conservation institutions.
+    </p>
 
-  <div class="affiliations">
-    
-    <div class="logo-card">
-      <a href="https://www.aru.ac.uk" target="_blank" rel="noopener noreferrer">
-       <img src="/assets/affiliations/aru.png" alt="Anglia Ruskin University" />
-      </a>
-      <p>Anglia Ruskin University</p>
+    <div class="affiliations">
+      <div class="logo-card">
+        <a href="https://www.aru.ac.uk" target="_blank" rel="noopener noreferrer">
+          <img src={`${BASE}assets/affiliations/aru.png`} alt="Anglia Ruskin University" />
+        </a>
+        <p>Anglia Ruskin University</p>
+      </div>
+
+      <div class="logo-card">
+        <a href="https://www.uacam.mx" target="_blank" rel="noopener noreferrer">
+          <img src={`${BASE}assets/affiliations/uacam.png`} alt="Universidad Autónoma de Campeche" />
+        </a>
+        <p>Universidad Autónoma de Campeche</p>
+      </div>
+
+      <div class="logo-card">
+        <a href="https://www.facebook.com/CRMC.Cam/" target="_blank" rel="noopener noreferrer">
+          <img src={`${BASE}assets/affiliations/croco.png`} alt="Crocodile Research and Management for Conservation" />
+        </a>
+        <p>Crocodile Research and Management for Conservation</p>
+      </div>
+
+      <div class="logo-card">
+        <a href="https://www.ecosur.mx" target="_blank" rel="noopener noreferrer">
+          <img src={`${BASE}assets/affiliations/ECOSUR.jpg`} alt="El Colegio de la Frontera Sur" />
+        </a>
+        <p>El Colegio de la Frontera Sur</p>
+      </div>
     </div>
-
-    <div class="logo-card">
-      <a href="https://www.uacam.mx" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/affiliations/uacam.png" alt="Universidad Autónoma de Campeche" />
-      </a>
-      <p>Universidad Autónoma de Campeche</p>
-    </div>
-
-    <div class="logo-card">
-      <a href="https://www.facebook.com/CRMC.Cam/" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/affiliations/croco.png" alt="Crocodile Research and Management for Conservation" />
-      </a>
-      <p>Crocodile Research and Management for Conservation</p>
-    </div>
-
-    <div class="logo-card">
-      <a href="https://www.ecosur.mx" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/affiliations/ECOSUR.jpg" alt="El Colegio de la Frontera Sur" />
-      </a>
-      <p>El Colegio de la Frontera Sur</p>
-    </div>
-
-  </div>
+  </Container>
 </Layout>
 
 <style>
   h1 {
     margin-top: 2rem;
-    margin-bottom: 1rem;
-    text-align: left; /* ← cambiato */
+    margin-bottom: 0.75rem;
+    text-align: left;
   }
 
   .intro {
-    text-align: left; /* ← cambiato */
-    max-width: 60ch;
-    margin-bottom: 3rem;
+    text-align: left;
+    max-width: 65ch;
+    margin-bottom: 2rem;
   }
 
   .affiliations {
@@ -69,16 +73,18 @@ const seo = {
   .logo-card {
     background: var(--theme-surface-1);
     border-radius: var(--theme-shape-radius);
-    padding: 1.5rem;
+    padding: 1.25rem;
     text-align: center;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
 
   .logo-card img {
     max-width: 180px;
+    width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto 1rem;
+    margin: 0 auto 0.75rem;
+    object-fit: contain;
   }
 
   .logo-card p {
@@ -88,10 +94,6 @@ const seo = {
   }
 
   @media (max-width: 600px) {
-    h1, .intro {
-      text-align: left; /* assicuriamo anche in mobile */
-    }
-
     .logo-card img {
       max-width: 140px;
     }
