@@ -5,54 +5,78 @@ const members = [
   {
     name: 'Francesca M. Cassola',
     role: 'Principal Investigator / Animal Behaviour',
-    img: '/odyssey-theme/assets/team/io1.jpg',
-    links: [{label:'ORCID', href:'https://orcid.org/0000-0002-0849-0070 ' }, {label:'Linkedin', href:'https://www.linkedin.com/in/francescamauracassola/'}],
+    photo: '/odyssey-theme/assets/team/io1.jpg',
+    links: [
+      { label: 'ORCID', href: 'https://orcid.org/0000-0002-0849-0070' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/francescamauracassola/' }
+    ],
   },
 
   {
     name: 'Claudia A.F. Wascher',
     role: 'Project Supervisor / Animal Cognition',
     photo: '/odyssey-theme/assets/team/cla1.png',
-    links: [{label:'ORCID', href:'https://orcid.org/0000-0003-4360-363X' }, {label:'Website', href: 'https://claudiawascher.github.io/'}],
+    links: [
+      { label: 'ORCID', href: 'https://orcid.org/0000-0003-4360-363X' },
+      { label: 'Website', href: 'https://claudiawascher.github.io/' }
+    ],
   },
-{
+
+  {
     name: 'Sérgio E. Padilla-Paz',
     role: 'Project Collaborator / Animal Behaviour',
     photo: '/odyssey-theme/assets/team/sergio1.jpg',
-    links: [{label:'ResearchGate, href:'https://www.researchgate.net/profile/Sergio-Padilla-10'}],
+    links: [
+      { label: 'ResearchGate', href: 'https://www.researchgate.net/profile/Sergio-Padilla-10' }
+    ],
   },
-{
+
+  {
     name: 'Mauricio González-Jáuregui',
     role: 'Project Collaborator / Animal Behaviour',
     photo: '/odyssey-theme/assets/team/mau1.jpg',
-    links: [{label:'ResearchGate', href:'https://www.researchgate.net/profile/Mauricio-Gonzalez-Jauregui'}],
+    links: [
+      { label: 'ResearchGate', href: 'https://www.researchgate.net/profile/Mauricio-Gonzalez-Jauregui' }
+    ],
   },
-{
+
+  {
     name: 'Anna Wilkinson',
     role: 'Project Collaborator / Animal Cognition',
     photo: '/odyssey-theme/assets/team/anna1.png',
-    links: [{label:'ORCID', href:'https://orcid.org/0000-0002-4500-0181' }, {label:'Website', href:'https://staff.lincoln.ac.uk/awilkinson'}],
+    links: [
+      { label: 'ORCID', href: 'https://orcid.org/0000-0002-4500-0181' },
+      { label: 'Website', href: 'https://staff.lincoln.ac.uk/awilkinson' }
+    ],
   },
-{
+
+  {
     name: 'Marisol Buenfil-Rojas',
-    role: 'Project Collaborator / Integrative Biotechnology’,
+    role: 'Project Collaborator / Integrative Biotechnology',
     photo: '/odyssey-theme/assets/team/mari1.jpg',
-    links: [{label:'ORCID', href:'https://orcid.org/0000-0003-0999-7428'}],
+    links: [
+      { label: 'ORCID', href: 'https://orcid.org/0000-0003-0999-7428' }
+    ],
   },
-{
+
+  {
     name: 'Yann Henaut',
     role: 'Project Collaborator / Animal Behaviour',
     photo: '/odyssey-theme/assets/team/yann.png',
-    links: [{label:'ORCID', href: 'https://orcid.org/0000-0002-0849-0070 ' }, {label:'Website', href: 'https://www.ecosur.mx/academico/yhenaut'}],
+    links: [
+      { label: 'ORCID', href: 'https://orcid.org/0000-0002-0849-0070' },
+      { label: 'Website', href: 'https://www.ecosur.mx/academico/yhenaut' }
+    ],
   },
-{
+
+  {
     name: 'Elisa De Bonis',
     role: 'Project Collaborator / Social Media',
     photo: '/odyssey-theme/assets/team/eli1.jpg',
-    links: [ {label:'Linkedin', href:'https://www.linkedin.com/in/elisa-de-bonis'}],
+    links: [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/elisa-de-bonis' }
+    ],
   },
-
-
 ];
 ---
 
@@ -66,12 +90,17 @@ const members = [
     <ul class="grid">
       {members.map((m) => (
         <li class="card">
-          <div class="thumb">{m.photo && <img src={m.photo} alt={m.name} loading="lazy" />}</div>
+          <div class="thumb">
+            {m.photo && <img src={m.photo} alt={m.name} loading="lazy" />}
+          </div>
           <h3 class="name">{m.name}</h3>
           <p class="role">{m.role}</p>
+
           {m.links?.length > 0 && (
             <ul class="links">
-              {m.links.map((l) => <li><a href={l.href} rel="noopener" target="_blank">{l.label}</a></li>)}
+              {m.links.map((l) => (
+                <li><a href={l.href} rel="noopener" target="_blank">{l.label}</a></li>
+              ))}
             </ul>
           )}
         </li>
@@ -81,17 +110,77 @@ const members = [
 </Layout>
 
 <style>
-  .hero { margin: var(--section-margin) auto; max-width: 56rem; }
-  .grid-wrap { margin: var(--section-margin) auto; }
-  .grid { list-style:none; margin:0; padding:0; display:grid; gap:var(--theme-grid-gap);
-          grid-template-columns:repeat(3,minmax(0,1fr)); }
-  @media (max-width:1024px){ .grid{ grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:640px){ .grid{ grid-template-columns:1fr;} }
-  .card { background:var(--theme-surface-1); border-radius:var(--theme-shape-radius); padding:1rem; text-align:center; }
-  .thumb { width:100%; aspect-ratio:1/1; overflow:hidden; border-radius:var(--theme-shape-radius); margin-bottom:.75rem; }
-  .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-  .name { margin:.25rem 0 0; }
-  .role { margin:.25rem 0 .5rem; color:var(--theme-on-surface-2); }
-  .links { display:flex; gap:.75rem; justify-content:center; list-style:none; padding:0; margin:.5rem 0 0; }
-  .links a { text-decoration:none; }
+  .hero {
+    margin: var(--section-margin) auto;
+    max-width: 56rem;
+  }
+
+  .grid-wrap {
+    margin: var(--section-margin) auto;
+  }
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--theme-grid-gap);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (max-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    background: var(--theme-surface-1);
+    border-radius: var(--theme-shape-radius);
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .thumb {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: var(--theme-shape-radius);
+    margin-bottom: .75rem;
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .name {
+    margin: .25rem 0 0;
+  }
+
+  .role {
+    margin: .25rem 0 .5rem;
+    color: var(--theme-on-surface-2);
+  }
+
+  .links {
+    display: flex;
+    gap: .75rem;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: .5rem 0 0;
+  }
+
+  .links a {
+    text-decoration: none;
+  }
 </style>
