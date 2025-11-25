@@ -96,9 +96,9 @@ export class ThemeSwitcher extends LitElement {
   // Aggiorna immagine hero se presente
   const hero = document.querySelector('#home-hero-image') as HTMLImageElement | null;
   if (hero) {
-    if (theme === 'dark')  hero.src = `${BASE}assets/images/home/dark-hero.jpg`;
-    if (theme === 'earth') hero.src = `${BASE}assets/images/home/earth-hero.jpg`;
-    if (theme === 'sand')  hero.src = `${BASE}assets/images/home/sand-hero.jpg`;
+    if (theme === 'dark')  hero.src = `${BASE}assets/images/home/CrocoBlack.jpg`;
+    if (theme === 'earth') hero.src = `${BASE}assets/images/home/CrocoGreen.jpg`;
+    if (theme === 'sand')  hero.src = `${BASE}assets/images/home/CrocoYellow.jpg`;
   }
 
   localStorage.setItem('theme', theme);
