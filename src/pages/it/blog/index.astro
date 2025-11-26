@@ -2,10 +2,12 @@
 import Layout from '../../../layouts/Page.astro';
 import BASE from '../../../utils/base-url';
 
+// Carica i post in italiano (cartella: src/pages/it/blog/posts/)
 const posts = (await Astro.glob('./posts/*.mdx'))
   .map((p) => {
     const fm = p.frontmatter ?? {};
     const date = fm.publishDate ? new Date(fm.publishDate) : null;
+
     return {
       url: p.url,
       title: fm.title ?? 'Senza titolo',
@@ -76,29 +78,28 @@ const posts = (await Astro.glob('./posts/*.mdx'))
     max-width: 56rem;
   }
 
-  .posts-grid {
-    margin: var(--section-margin) auto;
-  }
-
   .lang-switcher {
     display: flex;
+    justify-content: flex-end;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
-    font-size: 0.9rem;
   }
 
   .lang-switcher a {
-    padding: 0.15rem 0.75rem;
+    padding: 0.25rem 0.75rem;
     border-radius: 999px;
+    border: 1px solid var(--theme-on-surface-2);
+    font-size: var(--font-size-sm);
     text-decoration: none;
-    border: 1px solid transparent;
-    opacity: 0.7;
   }
 
   .lang-switcher a.active {
-    border-color: var(--theme-primary);
-    background: var(--theme-surface-1);
-    opacity: 1;
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+  }
+
+  .posts-grid {
+    margin: var(--section-margin) auto;
   }
 
   .grid {
@@ -131,10 +132,7 @@ const posts = (await Astro.glob('./posts/*.mdx'))
     height: 100%;
   }
 
-  .thumb {
-    aspect-ratio: 16/9;
-    overflow: hidden;
-  }
+  .thumb { aspect-ratio: 16/9; overflow: hidden; }
 
   .thumb img {
     width: 100%;
