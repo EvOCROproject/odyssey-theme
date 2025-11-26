@@ -2,11 +2,12 @@
 import Layout from '../../layouts/Page.astro';
 import BASE from '../../utils/base-url';
 
-// carica tutti i post in inglese da src/pages/blog/posts/*.mdx
+// Carica i post in inglese
 const posts = (await Astro.glob('./posts/*.mdx'))
   .map((p) => {
     const fm = p.frontmatter ?? {};
     const date = fm.publishDate ? new Date(fm.publishDate) : null;
+
     return {
       url: p.url,
       title: fm.title ?? 'Untitled',
@@ -23,10 +24,10 @@ const posts = (await Astro.glob('./posts/*.mdx'))
 <Layout title="Blog" description="Posts and insights from the EvOCRO project.">
   <section class="blog-hero">
     <div class="lang-switcher">
-      <a href={`${BASE}blog/`} class="active">EN</a>
-      <a href={`${BASE}it/blog/`}>IT</a>
-      <a href={`${BASE}es/blog/`}>ES</a>
-    </div>
+  <a href={`${BASE}blog/`} class="active">EN</a>
+  <a href={`${BASE}it/blog/`}>IT</a>
+  <a href={`${BASE}es/blog/`}>ES</a>
+</div>
 
     <h1>Blog</h1>
     <p>Posts and insights from the EvOCRO project.</p>
