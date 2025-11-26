@@ -2,15 +2,17 @@
 import Layout from '../../../layouts/Page.astro';
 import BASE from '../../../utils/base-url';
 
-// Carica i post in spagnolo (cartella: src/pages/es/blog/posts/)
-const posts = (await Astro.glob('./posts/*.mdx'))
+// Carica i post in italiano (può non essercene nessuno)
+const modules = await Astro.glob('./posts/*.mdx', { strict: false });
+
+const posts = (modules ?? [])
   .map((p) => {
     const fm = p.frontmatter ?? {};
     const date = fm.publishDate ? new Date(fm.publishDate) : null;
 
     return {
       url: p.url,
-      title: fm.title ?? 'Sin título',
+      title: fm.title ?? 'Senza titolo',
       description: fm.description ?? '',
       excerpt: fm.excerpt ?? '',
       pubDate: date,
@@ -21,20 +23,20 @@ const posts = (await Astro.glob('./posts/*.mdx'))
   .sort((a, b) => (b.pubDate?.getTime() ?? 0) - (a.pubDate?.getTime() ?? 0));
 ---
 
-<Layout title="Blog" description="Entradas y actualizaciones del proyecto EvOCRO.">
+<Layout title="Blog" description="Articoli e aggiornamenti dal progetto EvOCRO.">
   <section class="blog-hero">
     <div class="lang-switcher">
       <a href={`${BASE}blog/`}>EN</a>
-      <a href={`${BASE}it/blog/`}>IT</a>
-      <a href={`${BASE}es/blog/`} class="active">ES</a>
+      <a href={`${BASE}it/blog/`} class="active">IT</a>
+      <a href={`${BASE}es/blog/`}>ES</a>
     </div>
 
     <h1>Blog</h1>
-    <p>Entradas, relatos de campo y actualizaciones del proyecto EvOCRO.</p>
+    <p>Articoli e aggiornamenti dal progetto EvOCRO.</p>
   </section>
 
   <section class="posts-grid">
-    {posts.length === 0 && <p>Todavía no hay entradas.</p>}
+    {posts.length === 0 && <p>Non ci sono ancora articoli.</p>}
 
     <ul class="grid">
       {posts.map((post) => (
@@ -48,7 +50,7 @@ const posts = (await Astro.glob('./posts/*.mdx'))
             <div class="meta">
               {post.pubDate && (
                 <time datetime={post.pubDate.toISOString()}>
-                  {post.pubDate.toLocaleDateString('es-ES', {
+                  {post.pubDate.toLocaleDateString('it-IT', {
                     year: 'numeric',
                     month: 'short',
                     day: '2-digit',
@@ -98,9 +100,7 @@ const posts = (await Astro.glob('./posts/*.mdx'))
     color: var(--theme-on-primary);
   }
 
-  .posts-grid {
-    margin: var(--section-margin) auto;
-  }
+  .posts-grid { margin: var(--section-margin) auto; }
 
   .grid {
     list-style: none;
@@ -108,16 +108,11 @@ const posts = (await Astro.glob('./posts/*.mdx'))
     padding: 0;
     display: grid;
     gap: var(--theme-grid-gap);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0,1fr));
   }
 
-  @media (max-width: 1024px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (max-width: 640px) {
-    .grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 640px)  { .grid { grid-template-columns: 1fr; } }
 
   .card {
     background: var(--theme-surface-1);
@@ -144,39 +139,31 @@ const posts = (await Astro.glob('./posts/*.mdx'))
   .meta {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem 0;
+    gap: .75rem;
+    padding: .75rem 1rem 0;
   }
 
   .meta time {
-    font-size: 0.85rem;
+    font-size: .85rem;
     color: var(--theme-on-surface-2);
   }
 
   .tags {
     display: flex;
-    gap: 0.5rem;
+    gap: .5rem;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   .tags li {
-    font-size: 0.75rem;
-    padding: 0.15rem 0.5rem;
+    font-size: .75rem;
+    padding: .15rem .5rem;
     border-radius: 999px;
     background: var(--theme-surface-2);
     color: var(--theme-on-surface-1);
   }
 
-  .title {
-    padding: 0.25rem 1rem 0;
-    margin: 0;
-  }
-
-  .desc {
-    padding: 0.5rem 1rem 1rem;
-    margin: 0;
-    color: var(--theme-on-surface-2);
-  }
+  .title { padding: .25rem 1rem 0; margin: 0; }
+  .desc  { padding: .5rem 1rem 1rem; margin: 0; color: var(--theme-on-surface-2); }
 </style>
