@@ -2,7 +2,7 @@
 import Layout from '../../../layouts/Page.astro';
 import BASE from '../../../utils/base-url';
 
-// Carica i post in italiano (può non essercene nessuno)
+// Carica i post in spagnolo (può non essercene nessuno)
 const modules = await Astro.glob('./posts/*.mdx', { strict: false });
 
 const posts = (modules ?? [])
@@ -12,7 +12,7 @@ const posts = (modules ?? [])
 
     return {
       url: p.url,
-      title: fm.title ?? 'Senza titolo',
+      title: fm.title ?? 'Sin título',
       description: fm.description ?? '',
       excerpt: fm.excerpt ?? '',
       pubDate: date,
@@ -23,20 +23,20 @@ const posts = (modules ?? [])
   .sort((a, b) => (b.pubDate?.getTime() ?? 0) - (a.pubDate?.getTime() ?? 0));
 ---
 
-<Layout title="Blog" description="Articoli e aggiornamenti dal progetto EvOCRO.">
+<Layout title="Blog" description="Entradas del proyecto EvOCRO.">
   <section class="blog-hero">
     <div class="lang-switcher">
       <a href={`${BASE}blog/`}>EN</a>
-      <a href={`${BASE}it/blog/`} class="active">IT</a>
-      <a href={`${BASE}es/blog/`}>ES</a>
+      <a href={`${BASE}it/blog/`}>IT</a>
+      <a href={`${BASE}es/blog/`} class="active">ES</a>
     </div>
 
     <h1>Blog</h1>
-    <p>Articoli e aggiornamenti dal progetto EvOCRO.</p>
+    <p>Entradas del proyecto EvOCRO.</p>
   </section>
 
   <section class="posts-grid">
-    {posts.length === 0 && <p>Non ci sono ancora articoli.</p>}
+    {posts.length === 0 && <p>Todavía no hay entradas.</p>}
 
     <ul class="grid">
       {posts.map((post) => (
@@ -50,7 +50,7 @@ const posts = (modules ?? [])
             <div class="meta">
               {post.pubDate && (
                 <time datetime={post.pubDate.toISOString()}>
-                  {post.pubDate.toLocaleDateString('it-IT', {
+                  {post.pubDate.toLocaleDateString('es-ES', {
                     year: 'numeric',
                     month: 'short',
                     day: '2-digit',
