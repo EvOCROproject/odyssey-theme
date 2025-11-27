@@ -1,5 +1,6 @@
 // src/config/footer.js
 
+// Colonne del footer (4 colonne)
 export const footerLists = [
   {
     title: 'About MSCA',
@@ -36,4 +37,15 @@ export const footerLists = [
       { title: 'YouTube', slug: '#' },
     ],
   },
+];
+
+// ⬇️ questo DEVE esserci, anche se vuoto, perché Page.astro lo importa
+export const footerSocials = [];
+
+// Loghi in basso al footer
+export const footerLogos = [
+  { src: '/odyssey-theme/assets/footer-logos/TitleCol.jpg', alt: 'EvOCRO' },
+  { src: '/odyssey-theme/assets/footer-logos/eulogo.png', alt: 'European Union' },
+  { src: '/odyssey-theme/assets/footer-logos/msca.png', alt: 'MSCA' },
+  { src: '/odyssey-theme/assets/footer-logos/aru.png', alt: 'Anglia Ruskin University' },
 ];
