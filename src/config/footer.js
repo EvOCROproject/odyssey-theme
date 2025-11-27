@@ -1,6 +1,6 @@
 // src/config/footer.js
 
-// 🔹 Voci delle colonne nel footer
+// Colonne del footer
 export const footerLists = [
   {
     title: 'About MSCA',
@@ -23,8 +23,6 @@ export const footerLists = [
       { title: 'Get in touch', slug: '/odyssey-theme/contact' },
     ],
   },
-
-  // 🔹 SOLO SCRITTE — niente icone
   {
     title: 'Social',
     items: [
@@ -38,10 +36,10 @@ export const footerLists = [
   },
 ];
 
-// 🔹 Nessuna icona
+// Nessuna icona social (solo testi)
 export const footerSocials = [];
 
-// 🔹 Loghi centrali del footer (restano invariati)
+// Loghi in basso al footer
 export const footerLogos = [
   { src: '/odyssey-theme/assets/footer-logos/TitleCol.jpg', alt: 'EvOCRO' },
   { src: '/odyssey-theme/assets/footer-logos/eulogo.png', alt: 'European Union' },
