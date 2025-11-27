@@ -1,3 +1,59 @@
 
 Notizie
 Rassegna stampa, menzioni esterne e annunci non inclusi nel blog/vlog.
+
+---
+import Layout from '../../../layouts/Page.astro';
+import BASE from '../../../utils/base-url';
+---
+
+<Layout
+  title="News"
+  description="Rassegna stampa, menzioni esterne e annunci non inclusi nel blog/vlog."
+>
+  <section class="blog-hero">
+    <div class="lang-switcher">
+      <a href={`${BASE}vlog/`}>EN</a>
+      <a href={`${BASE}it/vlog/`} class="active">IT</a>
+      <a href={`${BASE}es/vlog/`}>ES</a>
+    </div>
+
+    <h1>Notizie</h1>
+    <p>Rassegna stampa, menzioni esterne e annunci non inclusi nel blog/vlog.</p>
+  </section>
+
+  <section class="posts-grid">
+    <p>Prossimamente...</p>
+  </section>
+</Layout>
+
+<style>
+  .blog-hero {
+    margin: var(--section-margin) auto;
+    max-width: 56rem;
+  }
+
+  .lang-switcher {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--theme-on-surface-2);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+  }
+
+  .lang-switcher a.active {
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+  }
+
+  .posts-grid {
+    margin: var(--section-margin) auto;
+  }
+</style>
