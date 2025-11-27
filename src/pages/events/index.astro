@@ -1,29 +1,9 @@
 ---
 import Layout from '../../layouts/Page.astro';
 import BASE from '../../utils/base-url';
-
-const modules = await Astro.glob('./posts/*.mdx', { strict: false });
-
-const posts = (modules ?? [])
-  .map((p) => {
-    const fm = p.frontmatter ?? {};
-    const date = fm.eventDate ? new Date(fm.eventDate) :
-                fm.publishDate ? new Date(fm.publishDate) : null;
-
-    return {
-      url: p.url,
-      title: fm.title ?? 'Untitled event',
-      description: fm.description ?? '',
-      excerpt: fm.excerpt ?? '',
-      date,
-      location: fm.location ?? '',
-      tags: fm.tags ?? [],
-    };
-  })
-  .sort((a, b) => (a.date?.getTime() ?? 0) - (b.date?.getTime() ?? 0));
 ---
 
-<Layout title="Events" description="Talks, conferences and public activities related to EvOCRO.">
+<Layout title="Events" description="Upcoming and past events.">
   <section class="events-hero">
     <div class="lang-switcher">
       <a href={`${BASE}events/`} class="active">EN</a>
@@ -32,36 +12,11 @@ const posts = (modules ?? [])
     </div>
 
     <h1>Events</h1>
-    <p>Talks, conferences and public activities related to EvOCRO.</p>
+    <p>Upcoming and past events.</p>
   </section>
 
-  <section class="events-list">
-    {posts.length === 0 && <p>No events scheduled yet.</p>}
-
-    <ul class="list">
-      {posts.map((ev) => (
-        <li class="event-card">
-          <a href={ev.url} class="event-link">
-            <div class="event-meta">
-              {ev.date && (
-                <time datetime={ev.date.toISOString()}>
-                  {ev.date.toLocaleDateString('en-GB', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: '2-digit',
-                  })}
-                </time>
-              )}
-              {ev.location && <span class="loc">{ev.location}</span>}
-            </div>
-            <h3 class="title">{ev.title}</h3>
-            {(ev.excerpt || ev.description) && (
-              <p class="desc">{ev.excerpt || ev.description}</p>
-            )}
-          </a>
-        </li>
-      ))}
-    </ul>
+  <section class="events-grid">
+    <p>Coming soon.</p>
   </section>
 </Layout>
 
@@ -91,40 +46,7 @@ const posts = (modules ?? [])
     color: var(--theme-on-primary);
   }
 
-  .events-list { margin: var(--section-margin) auto; }
-  .list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: var(--theme-grid-gap);
+  .events-grid {
+    margin: var(--section-margin) auto;
   }
-
-  .event-card {
-    background: var(--theme-surface-1);
-    border-radius: var(--theme-shape-radius);
-    padding: 1rem 1.25rem;
-  }
-
-  .event-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .event-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .75rem;
-    font-size: .9rem;
-    color: var(--theme-on-surface-2);
-    margin-bottom: .25rem;
-  }
-
-  .loc {
-    font-style: italic;
-  }
-
-  .title { margin: 0.25rem 0; }
-  .desc  { margin: 0.25rem 0 0; color: var(--theme-on-surface-2); }
 </style>
