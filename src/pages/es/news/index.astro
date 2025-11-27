@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Page.astro';
 import BASE from '../../../utils/base-url';
 
+// Carica eventuali post NEWS ES (può anche non esserci nulla)
 const modules = await Astro.glob('./posts/*.mdx', { strict: false });
 
 const posts = (modules ?? [])
@@ -22,16 +23,16 @@ const posts = (modules ?? [])
   .sort((a, b) => (b.pubDate?.getTime() ?? 0) - (a.pubDate?.getTime() ?? 0));
 ---
 
-<Layout title="Noticias" description="Notas de prensa, cobertura en medios y noticias del proyecto.">
-  <div class="lang-switcher">
-  <a href={`${BASE}news/`}>EN</a>
-  <a href={`${BASE}it/news/`}>IT</a>
-  <a href={`${BASE}es/news/`} class="active">ES</a>
-</div>
-
+<Layout title="Noticias" description="Noticias del proyecto EvOCRO.">
+  <section class="news-hero">
+    <div class="lang-switcher">
+      <a href={`${BASE}news/`}>EN</a>
+      <a href={`${BASE}it/news/`}>IT</a>
+      <a href={`${BASE}es/news/`} class="active">ES</a>
+    </div>
 
     <h1>Noticias</h1>
-    <p>Notas de prensa, cobertura en medios y noticias del proyecto.</p>
+    <p>Actualizaciones y novedades del proyecto EvOCRO.</p>
   </section>
 
   <section class="posts-grid">
@@ -57,6 +58,7 @@ const posts = (modules ?? [])
                   })}
                 </time>
               )}
+
               {post.tags?.length > 0 && (
                 <ul class="tags">
                   {post.tags.map((t) => <li>{t}</li>)}
@@ -101,7 +103,10 @@ const posts = (modules ?? [])
     color: var(--theme-on-primary);
   }
 
-  .posts-grid { margin: var(--section-margin) auto; }
+  .posts-grid {
+    margin: var(--section-margin) auto;
+  }
+
   .grid {
     list-style: none;
     margin: 0;
@@ -111,8 +116,13 @@ const posts = (modules ?? [])
     grid-template-columns: repeat(3, minmax(0,1fr));
   }
 
-  @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2,1fr); } }
-  @media (max-width: 640px)  { .grid { grid-template-columns: 1fr; } }
+  @media (max-width: 1024px) {
+    .grid { grid-template-columns: repeat(2,1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+  }
 
   .card {
     background: var(--theme-surface-1);
@@ -127,7 +137,11 @@ const posts = (modules ?? [])
     height: 100%;
   }
 
-  .thumb { aspect-ratio: 16/9; overflow: hidden; }
+  .thumb {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
   .thumb img {
     width: 100%;
     height: 100%;
@@ -163,6 +177,14 @@ const posts = (modules ?? [])
     color: var(--theme-on-surface-1);
   }
 
-  .title { padding: .25rem 1rem 0; margin: 0; }
-  .desc  { padding: .5rem 1rem 1rem; margin: 0; color: var(--theme-on-surface-2); }
+  .title {
+    padding: .25rem 1rem 0;
+    margin: 0;
+  }
+
+  .desc {
+    padding: .5rem 1rem 1rem;
+    margin: 0;
+    color: var(--theme-on-surface-2);
+  }
 </style>
