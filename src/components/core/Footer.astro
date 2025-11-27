@@ -6,7 +6,7 @@ import Plug from './Plug.astro';
 const {
   footerSocials = [],
   footerLists   = [],
-  footerLogos   = [], // ⬅️ nuovo
+  footerLogos   = [],
   copyrightName = '',
   background    = 'var(--theme-surface-1)',
   color         = 'var(--theme-on-surface-1)',
@@ -21,48 +21,6 @@ function isExternalLink(url) {
 <footer style={`--footer-bg:${background}; --footer-color:${color}`}>
   <Container>
     <div class="footer-grid__container">
-  {footerSocials.length > 0 && (
-    <div class="footer-brand__container">
-      <ul class="footer-socials__list">
-        {footerSocials.map((social) => (
-          <li class="footer-socials__item">
-            <a
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer-socials__link"
-              title={`Open ${social.name} profile`}
-            >
-              <Icon name={social.icon} width={24} height={24} />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
-
-  {footerLists.length > 0 &&
-    footerLists.map((list) => (
-      <div>
-        <p><strong>{list.title}</strong></p>
-        <ul class="footer-link__list">
-          {(list.items ?? []).map((item) => (
-            <li>
-              <a
-                href={item.slug}
-                target={isExternalLink(item.slug) ? '_blank' : '_self'}
-                rel={isExternalLink(item.slug) ? 'noopener noreferrer' : undefined}
-              >
-                {item.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))
-  }
-</div>
-
       {footerLists.length > 0 &&
         footerLists.map((list) => (
           <div>
@@ -111,38 +69,30 @@ function isExternalLink(url) {
   }
 
   .footer-grid__container {
-  padding: 6vh 0 1rem 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem;
- }
-
-  /* Social */
-  .footer-socials__list {
-    margin: 1rem 0 0;
-    padding: 0;
-    display: flex;
-    list-style: none;
-    gap: .5rem;
+    padding: 6vh 0 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
-  /* Link list */
   .footer-link__list {
     margin: 0;
     padding: 0;
     list-style: none;
   }
+
   .footer-link__list li {
     margin-bottom: 0.5rem;
   }
+
   .footer-link__list li a {
     text-decoration: none;
   }
+
   .footer-link__list li a:hover {
     opacity: 0.84;
   }
 
-  /* Row loghi uniformi */
   .footer-logos {
     margin: 2rem 0 0.5rem;
     display: flex;
@@ -150,14 +100,16 @@ function isExternalLink(url) {
     justify-content: center;
     gap: clamp(1rem, 2.5vw, 2rem);
   }
+
   .footer-logos img {
-    height: 48px;            /* ⬅️ stessa altezza per tutti */
+    height: 48px;
     width: auto;
     object-fit: contain;
     display: block;
-    filter: none;            /* mantieni colori originali */
+    filter: none;
     transition: transform 0.15s ease;
   }
+
   .footer-logos img:hover {
     transform: scale(1.05);
   }
@@ -167,6 +119,7 @@ function isExternalLink(url) {
     display: flex;
     flex-direction: column;
   }
+
   .footer-copyright__container p {
     font-size: var(--font-size-sm);
   }
@@ -177,6 +130,7 @@ function isExternalLink(url) {
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
   @media (max-width: 640px) {
     .footer-grid__container {
       padding: 4vh 0 1rem 0;
