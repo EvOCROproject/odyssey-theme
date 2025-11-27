@@ -21,28 +21,47 @@ function isExternalLink(url) {
 <footer style={`--footer-bg:${background}; --footer-color:${color}`}>
   <Container>
     <div class="footer-grid__container">
-      <div class="footer-brand__container">
-        <!-- Logo del sito: rimosso su richiesta. (Niente slot "logo") -->
+  {footerSocials.length > 0 && (
+    <div class="footer-brand__container">
+      <ul class="footer-socials__list">
+        {footerSocials.map((social) => (
+          <li class="footer-socials__item">
+            <a
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-socials__link"
+              title={`Open ${social.name} profile`}
+            >
+              <Icon name={social.icon} width={24} height={24} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
 
-        <!-- Social icons (se/quando le aggiungeremo) -->
-        <ul class="footer-socials__list">
-          {footerSocials.length > 0 &&
-            footerSocials.map((social) => (
-              <li class="footer-socials__item">
-                <a
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="footer-socials__link"
-                  title={`Open ${social.name} profile`}
-                >
-                  <Icon name={social.icon} width={24} height={24} />
-                </a>
-              </li>
-            ))
-          }
+  {footerLists.length > 0 &&
+    footerLists.map((list) => (
+      <div>
+        <p><strong>{list.title}</strong></p>
+        <ul class="footer-link__list">
+          {(list.items ?? []).map((item) => (
+            <li>
+              <a
+                href={item.slug}
+                target={isExternalLink(item.slug) ? '_blank' : '_self'}
+                rel={isExternalLink(item.slug) ? 'noopener noreferrer' : undefined}
+              >
+                {item.title}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
+    ))
+  }
+</div>
 
       {footerLists.length > 0 &&
         footerLists.map((list) => (
@@ -92,11 +111,11 @@ function isExternalLink(url) {
   }
 
   .footer-grid__container {
-    padding: 6vh 0 1rem 0;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 1.25rem;
-  }
+  padding: 6vh 0 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+ }
 
   /* Social */
   .footer-socials__list {
