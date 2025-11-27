@@ -24,14 +24,12 @@ export const footerLists = [
     ],
   },
 
-  // 🔹 Colonna Social (testi, non icone)
+  // 🔹 SOLO SCRITTE — niente icone
   {
     title: 'Social',
     items: [
       { title: 'Instagram', slug: 'https://www.instagram.com/evocroproject/' },
       { title: 'Facebook', slug: 'https://www.facebook.com/profile.php?id=61584270533357' },
-
-      // Profili futuri con placeholder:
       { title: 'Twitter / X', slug: '#' },
       { title: 'Bluesky', slug: '#' },
       { title: 'TikTok', slug: '#' },
@@ -40,44 +38,13 @@ export const footerLists = [
   },
 ];
 
-// 🔹 Icone social del footer (icone cliccabili)
-export const footerSocials = [
-  {
-    name: 'Instagram',
-    url: 'https://www.instagram.com/evocroproject/',
-    icon: 'local:insta-rounded',
-  },
-  {
-    name: 'Facebook',
-    url: 'https://www.facebook.com/profile.php?id=61584270533357',
-    icon: 'local:fb-rounded',
-  },
-  {
-    name: 'Twitter/X',
-    url: '#',
-    icon: 'local:twitter-rounded',
-  },
-  {
-    name: 'Bluesky',
-    url: '#',
-    icon: 'local:bsky-rounded',
-  },
-  {
-    name: 'TikTok',
-    url: '#',
-    icon: 'local:tiktok-rounded',
-  },
-  {
-    name: 'YouTube',
-    url: '#',
-    icon: 'local:youtube-rounded',
-  },
-];
+// 🔹 Nessuna icona
+export const footerSocials = [];
 
-// 🔹 Loghi centrali del footer
+// 🔹 Loghi centrali del footer (restano invariati)
 export const footerLogos = [
-  { src: '/odyssey-theme/assets/footer-logos/TitleCol.jpg',  alt: 'EvOCRO' },
-  { src: '/odyssey-theme/assets/footer-logos/eulogo.png',    alt: 'European Union' },
-  { src: '/odyssey-theme/assets/footer-logos/msca.png',      alt: 'MSCA' },
-  { src: '/odyssey-theme/assets/footer-logos/aru.png',       alt: 'Anglia Ruskin University' },
+  { src: '/odyssey-theme/assets/footer-logos/TitleCol.jpg', alt: 'EvOCRO' },
+  { src: '/odyssey-theme/assets/footer-logos/eulogo.png', alt: 'European Union' },
+  { src: '/odyssey-theme/assets/footer-logos/msca.png', alt: 'MSCA' },
+  { src: '/odyssey-theme/assets/footer-logos/aru.png', alt: 'Anglia Ruskin University' },
 ];
