@@ -12,7 +12,7 @@ const posts = (modules ?? [])
 
     return {
       url: p.url,
-      title: fm.title ?? 'Sin título',
+      title: fm.title ?? 'Sin titulo',
       description: fm.description ?? '',
       excerpt: fm.excerpt ?? '',
       pubDate: date,
@@ -23,7 +23,7 @@ const posts = (modules ?? [])
   .sort((a, b) => (b.pubDate?.getTime() ?? 0) - (a.pubDate?.getTime() ?? 0));
 ---
 
-<Layout title="Noticias" description="Notas de prensa, cobertura mediática y actualizaciones del proyecto.">
+<Layout title="Noticias" description="Comunicados de prensa, cobertura de los medios y actualizaciones del proyecto.">
   <section class="news-hero">
     <div class="lang-switcher">
       <a href={`${BASE}news/`}>EN</a>
@@ -32,11 +32,11 @@ const posts = (modules ?? [])
     </div>
 
     <h1>Noticias</h1>
-    <p>Notas de prensa, cobertura mediática y actualizaciones del proyecto.</p>
+    <p>Comunicados de prensa, cobertura de los medios y actualizaciones del proyecto.</p>
   </section>
 
   <section class="posts-grid">
-    {posts.length === 0 && <p>Coming soon.</p>}
+    {posts.length === 0 && <p>Proximamente.</p>}
 
     {posts.length > 0 && (
       <ul class="grid">
