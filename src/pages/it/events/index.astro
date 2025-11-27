@@ -1,1 +1,53 @@
+---
+import Layout from '../../../layouts/Page.astro';
+import BASE from '../../../utils/base-url';
+---
+
+<Layout title="Eventi" description="Eventi in programma e passati.">
+  <section class="events-hero">
+    <div class="lang-switcher">
+      <a href={`${BASE}events/`}>EN</a>
+      <a href={`${BASE}it/events/`} class="active">IT</a>
+      <a href={`${BASE}es/events/`}>ES</a>
+    </div>
+
+    <h1>Eventi</h1>
+    <p>Eventi in programma e passati.</p>
+  </section>
+
+  <section class="events-grid">
+    <p>Prossimamente.</p>
+  </section>
+</Layout>
+
+<style>
+  .events-hero {
+    margin: var(--section-margin) auto;
+    max-width: 56rem;
+  }
+
+  .lang-switcher {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--theme-on-surface-2);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+  }
+
+  .lang-switcher a.active {
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+  }
+
+  .events-grid {
+    margin: var(--section-margin) auto;
+  }
+</style>
 
