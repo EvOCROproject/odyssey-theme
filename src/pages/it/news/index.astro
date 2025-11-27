@@ -1,8 +1,8 @@
 ---
-import Layout from '../../../layouts/Page.astro';
-import BASE from '../../../utils/base-url';
+import Layout from '../../layouts/Page.astro';
+import BASE from '../../utils/base-url';
 
-// News IT – strict:false evita errori se non ci sono post
+// News EN – strict:false evita l'errore se non ci sono file
 const modules = await Astro.glob('./posts/*.mdx', { strict: false });
 
 const posts = (modules ?? [])
@@ -12,7 +12,7 @@ const posts = (modules ?? [])
 
     return {
       url: p.url,
-      title: fm.title ?? 'Senza titolo',
+      title: fm.title ?? 'Untitled',
       description: fm.description ?? '',
       excerpt: fm.excerpt ?? '',
       pubDate: date,
@@ -26,8 +26,8 @@ const posts = (modules ?? [])
 <Layout title="Notizie" description="Comunicati stampa, copertura mediatica e aggiornamenti sul progetto.">
   <section class="news-hero">
     <div class="lang-switcher">
-      <a href={`${BASE}news/`}>EN</a>
-      <a href={`${BASE}it/news/`} class="active">IT</a>
+      <a href={`${BASE}it/news/`}>EN</a>
+      <a href={`${BASE}news/`} class="active">IT</a>
       <a href={`${BASE}es/news/`}>ES</a>
     </div>
 
@@ -36,7 +36,7 @@ const posts = (modules ?? [])
   </section>
 
   <section class="posts-grid">
-    {posts.length === 0 && <p>In arrivo.</p>}
+    {posts.length === 0 && <p>Coming soon.</p>}
 
     {posts.length > 0 && (
       <ul class="grid">
@@ -52,7 +52,7 @@ const posts = (modules ?? [])
               <div class="meta">
                 {post.pubDate && (
                   <time datetime={post.pubDate.toISOString()}>
-                    {post.pubDate.toLocaleDateString('it-IT', {
+                    {post.pubDate.toLocaleDateString('en-GB', {
                       year: 'numeric',
                       month: 'short',
                       day: '2-digit',
