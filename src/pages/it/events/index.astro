@@ -1,0 +1,130 @@
+---
+import Layout from '../../../layouts/Page.astro';
+import BASE from '../../../utils/base-url';
+
+const modules = await Astro.glob('./posts/*.mdx', { strict: false });
+
+const posts = (modules ?? [])
+  .map((p) => {
+    const fm = p.frontmatter ?? {};
+    const date = fm.eventDate ? new Date(fm.eventDate) :
+                fm.publishDate ? new Date(fm.publishDate) : null;
+
+    return {
+      url: p.url,
+      title: fm.title ?? 'Evento senza titolo',
+      description: fm.description ?? '',
+      excerpt: fm.excerpt ?? '',
+      date,
+      location: fm.location ?? '',
+      tags: fm.tags ?? [],
+    };
+  })
+  .sort((a, b) => (a.date?.getTime() ?? 0) - (b.date?.getTime() ?? 0));
+---
+
+<Layout title="Eventi" description="Conferenze, seminari e attività pubbliche legate a EvOCRO.">
+  <section class="events-hero">
+    <div class="lang-switcher">
+      <a href={`${BASE}events/`}>EN</a>
+      <a href={`${BASE}it/events/`} class="active">IT</a>
+      <a href={`${BASE}es/events/`}>ES</a>
+    </div>
+
+    <h1>Eventi</h1>
+    <p>Conferenze, seminari e attività pubbliche legate a EvOCRO.</p>
+  </section>
+
+  <section class="events-list">
+    {posts.length === 0 && <p>Nessun evento in programma.</p>}
+
+    <ul class="list">
+      {posts.map((ev) => (
+        <li class="event-card">
+          <a href={ev.url} class="event-link">
+            <div class="event-meta">
+              {ev.date && (
+                <time datetime={ev.date.toISOString()}>
+                  {ev.date.toLocaleDateString('it-IT', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: '2-digit',
+                  })}
+                </time>
+              )}
+              {ev.location && <span class="loc">{ev.location}</span>}
+            </div>
+            <h3 class="title">{ev.title}</h3>
+            {(ev.excerpt || ev.description) && (
+              <p class="desc">{ev.excerpt || ev.description}</p>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  .events-hero {
+    margin: var(--section-margin) auto;
+    max-width: 56rem;
+  }
+
+  .lang-switcher {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--theme-on-surface-2);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+  }
+
+  .lang-switcher a.active {
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+  }
+
+  .events-list { margin: var(--section-margin) auto; }
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--theme-grid-gap);
+  }
+
+  .event-card {
+    background: var(--theme-surface-1);
+    border-radius: var(--theme-shape-radius);
+    padding: 1rem 1.25rem;
+  }
+
+  .event-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    font-size: .9rem;
+    color: var(--theme-on-surface-2);
+    margin-bottom: .25rem;
+  }
+
+  .loc {
+    font-style: italic;
+  }
+
+  .title { margin: 0.25rem 0; }
+  .desc  { margin: 0.25rem 0 0; color: var(--theme-on-surface-2); }
+</style>
