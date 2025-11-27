@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Page.astro';
-import BASE from '../../utils/base-url';
+import Layout from '../../../layouts/Page.astro';
+import BASE from '../../../utils/base-url';
 
-// News EN – strict:false evita l'errore se non ci sono file
+// News IT – strict:false evita errori se non ci sono post
 const modules = await Astro.glob('./posts/*.mdx', { strict: false });
 
 const posts = (modules ?? [])
@@ -12,7 +12,7 @@ const posts = (modules ?? [])
 
     return {
       url: p.url,
-      title: fm.title ?? 'Untitled',
+      title: fm.title ?? 'Senza titolo',
       description: fm.description ?? '',
       excerpt: fm.excerpt ?? '',
       pubDate: date,
@@ -23,15 +23,15 @@ const posts = (modules ?? [])
   .sort((a, b) => (b.pubDate?.getTime() ?? 0) - (a.pubDate?.getTime() ?? 0));
 ---
 
-<Layout title="Notizie" description="Comunicati stampa, copertura mediatica e aggiornamenti sul progetto.">
+<Layout title="News" description="Comunicati stampa, copertura mediatica e aggiornamenti sul progetto.">
   <section class="news-hero">
     <div class="lang-switcher">
-      <a href={`${BASE}it/news/`}>EN</a>
-      <a href={`${BASE}news/`} class="active">IT</a>
+      <a href={`${BASE}news/`}>EN</a>
+      <a href={`${BASE}it/news/`} class="active">IT</a>
       <a href={`${BASE}es/news/`}>ES</a>
     </div>
 
-    <h1>Notizie</h1>
+    <h1>News</h1>
     <p>Comunicati stampa, copertura mediatica e aggiornamenti sul progetto.</p>
   </section>
 
@@ -52,7 +52,7 @@ const posts = (modules ?? [])
               <div class="meta">
                 {post.pubDate && (
                   <time datetime={post.pubDate.toISOString()}>
-                    {post.pubDate.toLocaleDateString('en-GB', {
+                    {post.pubDate.toLocaleDateString('it-IT', {
                       year: 'numeric',
                       month: 'short',
                       day: '2-digit',
