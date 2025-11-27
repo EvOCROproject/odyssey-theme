@@ -1,5 +1,4 @@
 // src/data/publications.ts
-
 export type Publication = {
   title: string;
   authors: string;
@@ -11,5 +10,4 @@ export type Publication = {
   type?: 'journal' | 'conference' | 'book' | 'chapter' | 'preprint' | 'thesis' | 'other';
 };
 
-// ⚠️ Ora vuoto: verranno aggiunte pubblicazioni solo quando esisteranno davvero
 export const publications: Publication[] = [];
