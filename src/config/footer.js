@@ -45,34 +45,32 @@ export const footerSocials = [
   {
     name: 'Instagram',
     url: 'https://www.instagram.com/evocroproject/',
-    icon: 'mdi:instagram',
+    icon: 'local:insta-rounded',
   },
   {
     name: 'Facebook',
     url: 'https://www.facebook.com/profile.php?id=61584270533357',
-    icon: 'mdi:facebook',
+    icon: 'local:fb-rounded',
   },
-
-  // Futuri, già pronti:
   {
     name: 'Twitter/X',
     url: '#',
-    icon: 'mdi:twitter', // Nota: se vuoi l’icona “X” vera, te la preparo come SVG custom
+    icon: 'local:twitter-rounded',
   },
   {
     name: 'Bluesky',
     url: '#',
-    icon: 'mdi:alpha-b-circle', // Placeholder fino a che esiste l’account
+    icon: 'local:bsky-rounded',
   },
   {
     name: 'TikTok',
     url: '#',
-    icon: 'mdi:tiktok',
+    icon: 'local:tiktok-rounded',
   },
   {
     name: 'YouTube',
     url: '#',
-    icon: 'mdi:youtube',
+    icon: 'local:youtube-rounded',
   },
 ];
 
