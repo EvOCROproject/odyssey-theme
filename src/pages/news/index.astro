@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Page.astro';
 import BASE from '../../utils/base-url';
 
-// News EN – può anche non avere post, strict:false evita l'errore
+// News EN – strict:false evita l'errore se non ci sono file
 const modules = await Astro.glob('./posts/*.mdx', { strict: false });
 
 const posts = (modules ?? [])
@@ -24,54 +24,57 @@ const posts = (modules ?? [])
 ---
 
 <Layout title="News" description="Press releases, media coverage and project updates.">
- <div class="lang-switcher">
-  <a href={`${BASE}news/`} class="active">EN</a>
-  <a href={`${BASE}it/news/`}>IT</a>
-  <a href={`${BASE}es/news/`}>ES</a>
-</div>
+  <section class="news-hero">
+    <div class="lang-switcher">
+      <a href={`${BASE}news/`} class="active">EN</a>
+      <a href={`${BASE}it/news/`}>IT</a>
+      <a href={`${BASE}es/news/`}>ES</a>
+    </div>
 
     <h1>News</h1>
     <p>Press releases, media coverage and project updates.</p>
   </section>
 
   <section class="posts-grid">
-    {posts.length === 0 && <p>No news yet.</p>}
+    {posts.length === 0 && <p>Coming soon.</p>}
 
-    <ul class="grid">
-      {posts.map((post) => (
-        <li class="card">
-          <a href={post.url} class="card-link">
-            {post.image && (
-              <div class="thumb">
-                <img src={post.image} alt={post.title} loading="lazy" />
+    {posts.length > 0 && (
+      <ul class="grid">
+        {posts.map((post) => (
+          <li class="card">
+            <a href={post.url} class="card-link">
+              {post.image && (
+                <div class="thumb">
+                  <img src={post.image} alt={post.title} loading="lazy" />
+                </div>
+              )}
+
+              <div class="meta">
+                {post.pubDate && (
+                  <time datetime={post.pubDate.toISOString()}>
+                    {post.pubDate.toLocaleDateString('en-GB', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: '2-digit',
+                    })}
+                  </time>
+                )}
+                {post.tags?.length > 0 && (
+                  <ul class="tags">
+                    {post.tags.map((t) => <li>{t}</li>)}
+                  </ul>
+                )}
               </div>
-            )}
 
-            <div class="meta">
-              {post.pubDate && (
-                <time datetime={post.pubDate.toISOString()}>
-                  {post.pubDate.toLocaleDateString('en-GB', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: '2-digit',
-                  })}
-                </time>
+              <h3 class="title">{post.title}</h3>
+              {(post.excerpt || post.description) && (
+                <p class="desc">{post.excerpt || post.description}</p>
               )}
-              {post.tags?.length > 0 && (
-                <ul class="tags">
-                  {post.tags.map((t) => <li>{t}</li>)}
-                </ul>
-              )}
-            </div>
-
-            <h3 class="title">{post.title}</h3>
-            {(post.excerpt || post.description) && (
-              <p class="desc">{post.excerpt || post.description}</p>
-            )}
-          </a>
-        </li>
-      ))}
-    </ul>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
   </section>
 </Layout>
 
@@ -101,7 +104,9 @@ const posts = (modules ?? [])
     color: var(--theme-on-primary);
   }
 
-  .posts-grid { margin: var(--section-margin) auto; }
+  .posts-grid {
+    margin: var(--section-margin) auto;
+  }
 
   .grid {
     list-style: none;
@@ -112,8 +117,13 @@ const posts = (modules ?? [])
     grid-template-columns: repeat(3, minmax(0,1fr));
   }
 
-  @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2,1fr); } }
-  @media (max-width: 640px)  { .grid { grid-template-columns: 1fr; } }
+  @media (max-width: 1024px) {
+    .grid { grid-template-columns: repeat(2,1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+  }
 
   .card {
     background: var(--theme-surface-1);
@@ -128,7 +138,10 @@ const posts = (modules ?? [])
     height: 100%;
   }
 
-  .thumb { aspect-ratio: 16/9; overflow: hidden; }
+  .thumb {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
 
   .thumb img {
     width: 100%;
@@ -165,6 +178,14 @@ const posts = (modules ?? [])
     color: var(--theme-on-surface-1);
   }
 
-  .title { padding: .25rem 1rem 0; margin: 0; }
-  .desc  { padding: .5rem 1rem 1rem; margin: 0; color: var(--theme-on-surface-2); }
+  .title {
+    padding: .25rem 1rem 0;
+    margin: 0;
+  }
+
+  .desc {
+    padding: .5rem 1rem 1rem;
+    margin: 0;
+    color: var(--theme-on-surface-2);
+  }
 </style>
