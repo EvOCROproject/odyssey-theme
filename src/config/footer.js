@@ -1,6 +1,5 @@
 // src/config/footer.js
 
-// Colonne del footer (3 colonne → tutte allineate)
 export const footerLists = [
   {
     title: 'About MSCA',
@@ -18,26 +17,23 @@ export const footerLists = [
     ],
   },
   {
-    title: 'Contact & Social',
+    title: 'Contact',
     items: [
       { title: 'Get in touch', slug: '/odyssey-theme/contact' },
+    ],
+  },
+  {
+    title: 'Social',
+    items: [
       { title: 'Instagram', slug: 'https://www.instagram.com/evocroproject/' },
-      { title: 'Facebook', slug: 'https://www.facebook.com/profile.php?id=61584270533357' },
+      {
+        title: 'Facebook',
+        slug: 'https://www.facebook.com/profile.php?id=61584270533357',
+      },
       { title: 'Twitter / X', slug: '#' },
       { title: 'Bluesky', slug: '#' },
       { title: 'TikTok', slug: '#' },
       { title: 'YouTube', slug: '#' },
     ],
   },
-];
-
-// Nessuna icona social (solo link testuali)
-export const footerSocials = [];
-
-// Loghi in basso al footer
-export const footerLogos = [
-  { src: '/odyssey-theme/assets/footer-logos/TitleCol.jpg', alt: 'EvOCRO' },
-  { src: '/odyssey-theme/assets/footer-logos/eulogo.png', alt: 'European Union' },
-  { src: '/odyssey-theme/assets/footer-logos/msca.png', alt: 'MSCA' },
-  { src: '/odyssey-theme/assets/footer-logos/aru.png', alt: 'Anglia Ruskin University' },
 ];
