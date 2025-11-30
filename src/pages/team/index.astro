@@ -151,19 +151,21 @@ const members = [
   }
 
   .thumb {
-    width: 100%;
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    border-radius: var(--theme-shape-radius);
-    margin-bottom: .75rem;
-  }
+  width: 100%;
+  max-width: 280px;   /* puoi adattarlo */
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: var(--theme-shape-radius);
+  margin: 0 auto .75rem;   /* centra le foto nelle card */
+}
 
-  .thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+ .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* riempie perfettamente */
+  object-position: center; /* centra il volto */
+  display: block;
+}
 
   .name {
     margin: .25rem 0 0;
