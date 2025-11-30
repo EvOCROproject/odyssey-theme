@@ -1,0 +1,152 @@
+---
+import Layout from '../../layouts/Page.astro';
+import { Container, Button } from '@components/odyssey-theme';
+
+const seo = {
+  title: 'Il progetto EvOCRO',
+  description:
+    'EvOCRO – Evolutionary Origins of Cognition in Crocodiles. Obiettivi di ricerca, approccio e impatto.',
+};
+
+const BASE = import.meta.env.BASE_URL;
+---
+
+<Layout seo={seo}>
+  <Container>
+    <section class="project-hero">
+      <h1>Il Progetto</h1>
+      <p class="lede">
+        EvOCRO indaga come l’apprendimento e la flessibilità cognitiva si sviluppano lungo l’intero arco
+        della vita dei coccodrilli e come le differenze individuali modellano queste capacità, usando il
+        coccodrillo di Morelet come specie modello.
+      </p>
+
+      <div class="cta">
+        <Button href={`${BASE}publications`}>Publications</Button>
+        <Button href={`${BASE}team`} unelevated>Team</Button>
+      </div>
+    </section>
+
+    <section class="wysiwyg">
+      <h2>Perché i coccodrilli?</h2>
+      <p>
+        I coccodrilli sono predatori longevi, dotati di sistemi sensoriali molto sviluppati e
+        vivono in ambienti complessi e dinamici. Nonostante ciò, la loro cognizione è stata studiata
+        molto meno rispetto a quella di uccelli e mammiferi. I coccodrilli occupano anche una posizione
+        evolutiva chiave: appartengono agli arcosauri e si sono separati dagli uccelli (e dai dinosauri)
+        più di 250 milioni di anni fa, diventando fondamentali per comprendere come si sia evoluta la
+        cognizione in questo gruppo. Studiare il loro comportamento permette quindi di colmare un’importante
+        lacuna nella ricerca comparata e di mettere in discussione l’idea che solo le specie “classicamante complesse”
+        siano modelli adatti per lo studio della cognizione animale.
+      </p>
+
+      <h2>Obiettivi di ricerca</h2>
+      <p>
+        Studiare la cognizione dei coccodrilli aiuta a colmare un vuoto evolutivo importante e fornisce
+        informazioni utili per la conservazione, l’adattamento agli ambienti in cambiamento, le pratiche
+        di arricchimento ambientale e le linee guida sul benessere animale.
+        Il progetto si concentra su tre obiettivi principali:
+      </p>
+
+      <ul>
+        <li>
+          <strong>RO1 – Ontogenesi dell’apprendimento:</strong> come cambiano le capacità di apprendimento
+          dai piccoli appena nati ai giovani.
+        </li>
+        <li>
+          <strong>RO2 – Differenze individuali:</strong> in che modo il sesso e tratti di personalità come
+          esplorazione o timidezza influenzano la performance di apprendimento.
+        </li>
+        <li>
+          <strong>RO3 – Flessibilità cognitiva:</strong> se e come i coccodrilli si adattano quando le
+          associazioni tra stimolo e ricompensa vengono invertite (reversal learning).
+        </li>
+      </ul>
+
+      <h2>Approccio e work package</h2>
+      <p>
+        EvOCRO integra ecologia comportamentale, psicologia comparata e biologia evolutiva all’interno di una
+        rete di collaborazione internazionale. Il progetto sfrutta la possibilità unica di lavorare con
+        popolazioni di <em>Crocodylus moreletii</em> allevate in condizioni seminaturali, che offrono un equilibrio
+        ideale tra controllo sperimentale e realismo ecologico. In questi contesti osserviamo gli animali,
+        testiamo le loro capacità cognitive e confrontiamo individui di età, sesso e personalità differenti.
+      </p>
+
+      <h3>WP1 – Ontogenesi dell’apprendimento</h3>
+      <p>
+        WP1 esamina come l’apprendimento si sviluppa dalla schiusa alla fase giovanile tramite rinforzo positivo,
+        compiti di discriminazione a due scelte e reversal learning, per quantificare i cambiamenti cognitivi
+        legati all’età.
+      </p>
+
+      <h3>WP2 – Differenze individuali</h3>
+      <p>
+        WP2 valuta il sesso e tratti di personalità (ad esempio audacia, esplorazione, risposta alla novità) e
+        li mette in relazione con i dati di apprendimento generati in WP1, per comprendere come le tendenze
+        comportamentali stabili influenzino la cognizione.
+      </p>
+
+      <h3>WP3 – Flessibilità cognitiva</h3>
+      <p>
+        WP3 amplia i compiti di apprendimento invertendo ripetutamente le associazioni tra stimolo e ricompensa.
+        Questo permette di quantificare la flessibilità e misurare quanto rapidamente gli individui si adattano
+        a nuove regole.
+      </p>
+
+      <h3>WP4 &amp; WP5 – Formazione, gestione e comunicazione</h3>
+      <p>
+        WP4 è dedicato alla formazione scientifica, alle pratiche di open science e allo sviluppo di carriera.  
+        WP5 comprende la disseminazione, le pubblicazioni, le attività di outreach e il coinvolgimento del pubblico
+        attraverso media, workshop ed eventi.
+      </p>
+
+      <h2>Impatto</h2>
+      <p>
+        EvOCRO amplierà le conoscenze sulla cognizione dei rettili, fornirà nuovi dataset longitudinali e
+        contribuirà alla ricerca evolutiva comparata oltre le specie modello classiche.
+      </p>
+      <p>
+        I risultati sosterranno strategie di conservazione, benessere e gestione in allevamenti, zoo e aree protette
+        e contribuiranno a diversi Obiettivi di Sviluppo Sostenibile delle Nazioni Unite attraverso ricerca,
+        educazione e coinvolgimento del pubblico.
+      </p>
+    </section>
+  </Container>
+</Layout>
+
+<style>
+  .project-hero {
+    margin: var(--section-margin) auto;
+    max-width: 60rem;
+  }
+
+  .project-hero h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .lede {
+    color: var(--theme-on-surface-2);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .wysiwyg {
+    margin: var(--section-margin) auto;
+    max-width: 60rem;
+  }
+
+  .wysiwyg h2 {
+    margin-top: 2rem;
+  }
+
+  .wysiwyg h3 {
+    margin-top: 1.75rem;
+  }
+</style>
