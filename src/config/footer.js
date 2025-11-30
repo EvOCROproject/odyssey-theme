@@ -14,13 +14,13 @@ export const footerLists = [
   {
     title: 'Project',
     items: [
-      { title: 'EvOCRO Project', slug: '/odyssey-theme/project' },
+      { title: 'EvOCRO Project', slug: '/project' },
     ],
   },
   {
     title: 'Contact',
     items: [
-      { title: 'Get in touch', slug: '/odyssey-theme/contact' },
+      { title: 'Get in touch', slug: '/contact' },
     ],
   },
   {
