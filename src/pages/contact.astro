@@ -1,6 +1,102 @@
 ---
-import ContactPage from './company/contact.astro';
-export const prerender = true;
+import Layout from '../layouts/Page.astro';
+import { Container } from '@components/odyssey-theme';
+
+const seo = {
+  title: 'Contact | EvOCRO',
+  description: 'Get in touch with the EvOCRO research team',
+};
+
+const BASE = import.meta.env.BASE_URL;
 ---
 
-<ContactPage />
+<Layout seo={seo}>
+  <Container>
+    <section class="contact-section">
+      <div class="contact-text">
+        <h1>Contact</h1>
+        <p>
+          For inquiries about the EvOCRO project, collaborations, or press requests,
+          feel free to reach out by email.
+        </p>
+
+        <div class="contact-info">
+          <p>
+            <strong>General email:</strong><br />
+            <a href="mailto:evocroproject@gmail.com">evocroproject@gmail.com</a>
+          </p>
+
+          <p>
+            <strong>Media, social &amp; communication:</strong><br />
+            <a href="mailto:evocroproject.media@gmail.com">evocroproject.media@gmail.com</a>
+          </p>
+
+          <p>
+            <strong>Institution:</strong> Anglia Ruskin University — Department of Life Sciences,
+            Science Centre, Cambridge<br />
+            CB1 1PT, United Kingdom
+          </p>
+
+          <p>
+            <strong>Project:</strong> EvOCRO – Evolutionary Origins of Cognition in Crocodiles
+          </p>
+        </div>
+
+        <p class="note">
+          You can also follow updates on our <a href={`${BASE}blog`}>blog</a> or
+          <a href={`${BASE}events`}>events</a> page.
+        </p>
+      </div>
+
+      <div class="contact-image">
+        <img src={`${BASE}assets/contact/crocs.jpg`} alt="Crocs Group" loading="lazy" />
+      </div>
+    </section>
+  </Container>
+</Layout>
+
+<style>
+  .contact-section {
+    margin: var(--section-margin) auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .contact-text {
+    background: var(--theme-surface-1);
+    border-radius: var(--theme-shape-radius);
+    padding: 2rem;
+  }
+
+  .contact-info p {
+    margin: 0.3rem 0;
+  }
+
+  .contact-info a {
+    color: var(--theme-primary);
+    text-decoration: none;
+  }
+
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-image img {
+    border-radius: var(--theme-shape-radius);
+    width: 100%;
+    height: auto;
+  }
+
+  .note {
+    margin-top: 1rem;
+    color: var(--theme-on-surface-2);
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
