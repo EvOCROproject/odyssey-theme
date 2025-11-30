@@ -1,0 +1,162 @@
+---
+import Layout from '../../layouts/Page.astro';
+import { Container, Button } from '@components/odyssey-theme';
+
+const seo = {
+  title: 'Proyecto EvOCRO',
+  description:
+    'EvOCRO – Evolutionary Origins of Cognition in Crocodiles. Objetivos de investigación, enfoque e impacto.',
+};
+
+const BASE = import.meta.env.BASE_URL;
+---
+
+<Layout seo={seo}>
+  <Container>
+    <section class="project-hero">
+  <div class="lang-switcher">
+    <a href={`${BASE}project`}>EN</a>
+    <a href={`${BASE}it/project`}>IT</a>
+    <a href={`${BASE}es/project`} class="active">ES</a>
+  </div>
+
+  <h1>El Proyecto</h1>
+  <p class="lede">
+    EvOCRO investiga cómo el aprendizaje y la flexibilidad cognitiva se desarrollan...
+  </p>
+  ...
+      <h1>El Proyecto</h1>
+      <p class="lede">
+        EvOCRO investiga cómo el aprendizaje y la flexibilidad cognitiva se desarrollan a lo largo de la vida
+        de los cocodrilos y cómo las diferencias individuales moldean estas capacidades, utilizando al
+        cocodrilo de Morelet como especie modelo.
+      </p>
+
+      <div class="cta">
+        <Button href={`${BASE}publications`}>Publications</Button>
+        <Button href={`${BASE}team`} unelevated>Team</Button>
+      </div>
+    </section>
+
+    <section class="wysiwyg">
+      <h2>¿Por qué cocodrilos?</h2>
+      <p>
+        Los cocodrilos son depredadores longevos, con sistemas sensoriales muy desarrollados y que viven en
+        entornos complejos y dinámicos. Sin embargo, su cognición ha sido estudiada mucho menos que la de aves
+        y mamíferos. Además, los cocodrilos ocupan una posición evolutiva clave: pertenecen a los arcosaurios y se
+        separaron de las aves (y de los dinosaurios) hace más de 250 millones de años, lo que los convierte en
+        esenciales para comprender cómo evolucionó la cognición en este linaje. Estudiar su comportamiento permite
+        llenar un vacío importante en la investigación comparada y cuestionar la idea de que sólo las especies
+        “clásicamente complejas” son modelos adecuados para el estudio de la cognición animal.
+      </p>
+
+      <h2>Objetivos de investigación</h2>
+      <p>
+        El estudio de la cognición en cocodrilianos ayuda a cerrar una brecha evolutiva importante y aporta
+        información útil para la conservación, la adaptación a entornos cambiantes, las prácticas de enriquecimiento
+        ambiental y las directrices de bienestar animal.
+        El proyecto se centra en tres objetivos principales:
+      </p>
+
+      <ul>
+        <li>
+          <strong>RO1 – Ontogenia del aprendizaje:</strong> cómo cambian las capacidades de aprendizaje desde las
+          crías recién nacidas hasta los juveniles.
+        </li>
+        <li>
+          <strong>RO2 – Diferencias individuales:</strong> cómo el sexo y rasgos de personalidad como exploración
+          o timidez influyen en el rendimiento de aprendizaje.
+        </li>
+        <li>
+          <strong>RO3 – Flexibilidad cognitiva:</strong> si los cocodrilos se adaptan cuando se invierten las
+          asociaciones entre estímulo y recompensa (reversal learning).
+        </li>
+      </ul>
+
+      <h2>Enfoque y paquetes de trabajo</h2>
+      <p>
+        EvOCRO integra ecología del comportamiento, psicología comparada y biología evolutiva dentro de una red
+        internacional de colaboración. El proyecto aprovecha la oportunidad única de trabajar con poblaciones de
+        <em>Crocodylus moreletii</em> criadas en condiciones seminaturales, que ofrecen un equilibrio ideal entre
+        control experimental y realismo ecológico. En estos entornos observamos a los animales, ponemos a prueba
+        sus capacidades cognitivas y comparamos individuos de distintas edades, sexos y personalidades.
+      </p>
+
+      <h3>WP1 – Ontogenia del aprendizaje</h3>
+      <p>
+        WP1 examina cómo se desarrolla el aprendizaje desde la eclosión hasta la fase juvenil mediante refuerzo
+        positivo, tareas de discriminación de dos opciones y reversal learning, para cuantificar los cambios
+        cognitivos relacionados con la edad.
+      </p>
+
+      <h3>WP2 – Diferencias individuales</h3>
+      <p>
+        WP2 evalúa el sexo y rasgos de personalidad (por ejemplo, audacia, exploración, respuesta a la novedad) y
+        los relaciona con los datos de aprendizaje generados en WP1, para comprender cómo las tendencias
+        conductuales estables influyen en la cognición.
+      </p>
+
+      <h3>WP3 – Flexibilidad cognitiva</h3>
+      <p>
+        WP3 amplía las tareas de aprendizaje invirtiendo repetidamente las asociaciones entre estímulo y recompensa.
+        Esto permite cuantificar la flexibilidad y medir con qué rapidez los individuos se ajustan a nuevas reglas.
+      </p>
+
+      <h3>WP4 y WP5 – Formación, gestión y comunicación</h3>
+      <p>
+        WP4 se centra en la formación científica, las prácticas de ciencia abierta y el desarrollo de carrera.  
+        WP5 incluye la difusión, las publicaciones, las actividades de divulgación y la participación pública a
+        través de medios, talleres y eventos.
+      </p>
+
+      <h2>Impacto</h2>
+      <p>
+        EvOCRO ampliará el conocimiento científico sobre la cognición en reptiles, proporcionará nuevos conjuntos
+        de datos longitudinales y contribuirá a la investigación evolutiva comparada más allá de las especies modelo
+        clásicas.
+      </p>
+      <p>
+        Los resultados apoyarán estrategias de conservación, bienestar y manejo en granjas, zoológicos y áreas
+        protegidas, y contribuirán a varios Objetivos de Desarrollo Sostenible de las Naciones Unidas a través de
+        la investigación, la educación y la implicación del público.
+      </p>
+    </section>
+  </Container>
+</Layout>
+
+<style>
+  .project-hero {
+    margin: var(--section-margin) auto;
+    max-width: 60rem;
+  }
+
+  .project-hero h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .lede {
+    color: var(--theme-on-surface-2);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .wysiwyg {
+    margin: var(--section-margin) auto;
+    max-width: 60rem;
+  }
+
+  .wysiwyg h2 {
+    margin-top: 2rem;
+  }
+
+  .wysiwyg h3 {
+    margin-top: 1.75rem;
+  }
+</style>
