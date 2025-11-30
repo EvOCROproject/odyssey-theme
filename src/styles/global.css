@@ -73,3 +73,11 @@ pre .language-id {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+
+/* SOLO TEMA SCURO: sfondo delle card un po' più chiaro per fare contrasto */
+:root[data-theme="dark"] .feature-card__card,
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .logo-card,
+:root[data-theme="dark"] .contact-text {
+  background-color: #262626; /* grigio scuro, non nero pieno */
+}
