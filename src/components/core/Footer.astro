@@ -102,13 +102,14 @@ function isExternalLink(url) {
   }
 
   .footer-logos img {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-    filter: none;
-    transition: transform 0.15s ease;
-  }
+  width: 120px;           /* larghezza uniforme per tutti */
+  height: 60px;           /* altezza uniforme per tutti */
+  object-fit: contain;    /* non distorce */
+  object-position: center;
+  padding: 0.25rem;
+  background: white;      /* opzionale, migliora i PNG con trasparenza */
+  border-radius: 0.25rem; /* opzionale, stile più pulito */
+}
 
   .footer-logos img:hover {
     transform: scale(1.05);
