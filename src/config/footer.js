@@ -44,5 +44,5 @@ export const footerSocials = [];
 
 // Loghi in basso al footer
 export const footerLogos = [
-  { src: '/odyssey-theme/assets/footer-logos/logofooter.png', alt: 'logofooter' },
+  { src: '/assets/footer-logos/logofooter.png', alt: 'logofooter' },
 ];
