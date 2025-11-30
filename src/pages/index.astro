@@ -1,1 +1,28 @@
---- import { Container, FeatureCard } from '@components/odyssey-theme'; import Layout from '../layouts/Page.astro'; import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro'; const seo = { title: 'EvOCRO — Evolutionary Origins of Cognition in Crocodiles', description: 'Evolutionary Origins of Cognition in Crocodiles', image: '/assets/social/home-share.png', // immagine per le anteprime social }; --- <Layout seo={seo}> <HomeHeroSection /> <Container> <section class="feature-card__section"> <h2>Media</h2> <p>Stories from the field: blog posts and video diaries.</p> <div class="feature-card__grid"> <FeatureCard href="/blog" title="Blog" imgSrc="/assets/images/home/screenshots/blog.webp" /> <FeatureCard href="/vlog" title="Vlog" imgSrc="/assets/images/home/screenshots/vlog.webp" /> </div> </section> </Container> <Container> <section class="feature-card__section"> <h2>Updates</h2> <p>News and upcoming events from the EvOCRO project.</p> <div class="feature-card__grid"> <FeatureCard href="/news" title="News" imgSrc="/assets/images/home/screenshots/news.webp" /> <FeatureCard href="/events" title="Events" imgSrc="/assets/images/home/screenshots/events.webp" /> </div> </section> </Container> <Container> <section class="feature-card__section"> <h2>Research Group</h2> <p>Meet the team and our partner institutions.</p> <div class="feature-card__grid"> <FeatureCard href="/team" title="Team" imgSrc="/assets/images/home/screenshots/team.webp" /> <FeatureCard href="/affiliations" title="Affiliations" imgSrc="/assets/images/home/screenshots/affiliations.webp" /> </div> </section> </Container> </Layout> <style> .feature-card__section { margin: var(--section-margin) auto; } .feature-card__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--theme-grid-gap); } @media (max-width: 768px) { .feature-card__grid { grid-template-columns: 1fr; } } </style>
+--- import { Container, FeatureCard } from '@components/odyssey-theme'; 
+import Layout from '../layouts/Page.astro'; 
+import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro'; 
+const seo = { title: 'EvOCRO — Evolutionary Origins of Cognition in Crocodiles', 
+description: 'Evolutionary Origins of Cognition in Crocodiles', 
+image: '/assets/social/home-share.png', // immagine per le anteprime social }; 
+
+--- <Layout seo={seo}> <HomeHeroSection /> 
+<Container> <section class="feature-card__section"> 
+<h2>Media</h2> 
+<p>Stories from the field: blog posts and video diaries.
+</p> <div class="feature-card__grid"> 
+<FeatureCard href="/blog" 
+title="Blog" imgSrc="/assets/images/home/screenshots/blog.webp" /> 
+<FeatureCard href="/vlog" title="Vlog" imgSrc="/assets/images/home/screenshots/vlog.webp" /> 
+</div> 
+</section> 
+</Container> 
+<Container> <section class="feature-card__section"> 
+<h2>Updates</h2> 
+<p>News and upcoming events from the EvOCRO project.</p>
+<div class="feature-card__grid"> 
+<FeatureCard href="/news" title="News" imgSrc="/assets/images/home/screenshots/news.webp" /> 
+<FeatureCard href="/events" title="Events" imgSrc="/assets/images/home/screenshots/events.webp" /> 
+</div> 
+</section> 
+</Container> 
+<Container> <section class="feature-card__section"> <h2>Research Group</h2> <p>Meet the team and our partner institutions.</p> <div class="feature-card__grid"> <FeatureCard href="/team" title="Team" imgSrc="/assets/images/home/screenshots/team.webp" /> <FeatureCard href="/affiliations" title="Affiliations" imgSrc="/assets/images/home/screenshots/affiliations.webp" /> </div> </section> </Container> </Layout> <style> .feature-card__section { margin: var(--section-margin) auto; } .feature-card__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--theme-grid-gap); } @media (max-width: 768px) { .feature-card__grid { grid-template-columns: 1fr; } } </style>
