@@ -15,7 +15,7 @@ const title = Astro.props.title || settings.title;
 const description = Astro.props.description || settings.description;
 const canonicalURL = Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
 
-const defaultImage = '/assets/social/home-share.jpg'; // immagine di default del sito
+const defaultImage = '/assets/social/home-share.png'; // immagine di default del sito
 
 const image = new URL(
   Astro.props.image || defaultImage,
