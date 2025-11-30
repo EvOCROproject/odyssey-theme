@@ -135,4 +135,14 @@ function isExternalLink(url) {
       grid-template-columns: 1fr;
     }
   }
+  /* --- SOLO TEMA SCURO: evidenzia i loghi del footer --- */
+  :root[data-theme="dark"] .footer-logos img {
+    background-color: rgba(255, 255, 255, 0.08);   /* leggero alone chiaro dietro */
+    border: 1px solid rgba(255, 255, 255, 0.4);    /* contorno chiaro */
+    border-radius: 0.5rem;                         /* angoli morbidi */
+    padding: 0.3rem 0.8rem;                        /* spazio attorno al logo */
+  }
+
 </style>
+
+
