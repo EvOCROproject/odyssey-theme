@@ -1,11 +1,13 @@
 ---
-import Layout from '../../layouts/Page.astro';
+import Layout from '../layouts/Page.astro';
 import { Container } from '@components/odyssey-theme';
 
 const seo = {
   title: 'Contact | EvOCRO',
   description: 'Get in touch with the EvOCRO research team',
 };
+
+const BASE = import.meta.env.BASE_URL;
 ---
 
 <Layout seo={seo}>
@@ -18,35 +20,36 @@ const seo = {
           feel free to reach out by email.
         </p>
 
-         <div class="contact-info">
-
+        <div class="contact-info">
           <p>
             <strong>General email:</strong><br />
             <a href="mailto:evocroproject@gmail.com">evocroproject@gmail.com</a>
           </p>
 
           <p>
-            <strong>Media, social & communication:</strong><br />
+            <strong>Media, social &amp; communication:</strong><br />
             <a href="mailto:evocroproject.media@gmail.com">evocroproject.media@gmail.com</a>
           </p>
-         <p>
-  <strong>Institution:</strong> Anglia Ruskin University — Department of Life Sciences,
-  Science Centre, Cambridge<br />
-  CB1 1PT, United Kingdom
-</p>
+
+          <p>
+            <strong>Institution:</strong> Anglia Ruskin University — Department of Life Sciences,
+            Science Centre, Cambridge<br />
+            CB1 1PT, United Kingdom
+          </p>
+
           <p>
             <strong>Project:</strong> EvOCRO – Evolutionary Origins of Cognition in Crocodiles
           </p>
         </div>
 
         <p class="note">
-          You can also follow updates on our <a href="/blog">blog</a> or
-          <a href="/events">events</a> page.
+          You can also follow updates on our <a href={`${BASE}blog`}>blog</a> or
+          <a href={`${BASE}events`}>events</a> page.
         </p>
       </div>
 
       <div class="contact-image">
-        <img src="/assets/contact/crocs.jpg" alt="Crocs Group" loading="lazy"/>
+        <img src={`${BASE}assets/contact/crocs.jpg`} alt="Crocs Group" loading="lazy" />
       </div>
     </section>
   </Container>
