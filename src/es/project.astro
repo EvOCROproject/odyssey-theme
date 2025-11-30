@@ -159,4 +159,24 @@ const BASE = import.meta.env.BASE_URL;
   .wysiwyg h3 {
     margin-top: 1.75rem;
   }
+
+.lang-switcher {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--theme-on-surface-2);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+  }
+
+  .lang-switcher a.active {
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+  }
 </style>
