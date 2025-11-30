@@ -44,9 +44,5 @@ export const footerSocials = [];
 
 // Loghi in basso al footer
 export const footerLogos = [
-  { src: '/odyssey-theme/assets/footer-logos/TitleCol.jpg', alt: 'EvOCRO' },
-  { src: '/odyssey-theme/assets/footer-logos/aru.png', alt: 'Anglia Ruskin University' },
-  { src: '/odyssey-theme/assets/footer-logos/eulogo.png', alt: 'European Union' },
-  { src: '/odyssey-theme/assets/footer-logos/msca.png', alt: 'MSCA' },
-  { src: '/odyssey-theme/assets/footer-logos/MCAA.png', alt: 'MCAA' }
+  { src: '/odyssey-theme/assets/footer-logos/logofooter.png', alt: 'logofooter' },
 ];
